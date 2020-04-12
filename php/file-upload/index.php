@@ -6,6 +6,9 @@ if (!empty($_FILES['uploaded_file'])) {
   move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $uploaded_file);
   $uploaded = true;
 }
+
+$images = glob('./upload_dir/*');
+
 ?>
 
 <!DOCTYPE html>
@@ -27,6 +30,10 @@ if (!empty($_FILES['uploaded_file'])) {
     アップロード: <input name="uploaded_file" type="file" />
     <input type="submit" value="ファイル送信" />
   </form>
+
+  <?php foreach($images as $image): ?>
+    <img src="<?php echo $image; ?> " alt="" srcset="" width="200">
+  <?php endforeach ?>
 </body>
 
 </html>
