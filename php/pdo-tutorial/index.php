@@ -20,6 +20,7 @@ try {
   exit;
 }
 
+// データベースに登録
 function create($dbh, $title, $message) {
   $stmt = $dbh->prepare("INSERT INTO memo (title,message) VALUES (?,?)");
   $data = [];
@@ -28,6 +29,7 @@ function create($dbh, $title, $message) {
   $stmt->execute($data);
 }
 
+// データベースからデータを取得する
 function selectAll($dbh) {
   $stmt = $dbh->prepare('SELECT * FROM memo ORDER BY updatedAt DESC');
   $stmt->execute();
