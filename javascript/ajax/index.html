@@ -9,9 +9,9 @@
  <div onclick="addFav(this)">いいね！<span class="iine">0</span></div>
 
  <script>
-   function addFav(e) {
+   function addFav(event) {
      httpRequest = new XMLHttpRequest();
-     const iine = document.querySelector(".iine")
+     const iine = event.querySelector("span.iine")
 
      httpRequest.onreadystatechange = function(){
         // ここでサーバーからの応答を処理します。
