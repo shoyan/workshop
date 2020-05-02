@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+ <div onclick="addFav(this)">いいね！<span class="iine">0</span></div>
+
+ <script>
+   function addFav(e) {
+     httpRequest = new XMLHttpRequest();
+     const iine = document.querySelector(".iine")
+
+     httpRequest.onreadystatechange = function(){
+        // ここでサーバーからの応答を処理します。
+        if (httpRequest.readyState === XMLHttpRequest.DONE) {
+            if (httpRequest.status === 200) {
+              const response = JSON.parse(httpRequest.responseText)
+              iine.innerText = response.fav_count 
+            } else {
+              alert('リクエストに問題が発生しました');
+            }
+        }
+     }; 
+     httpRequest.open('POST', 'http://localhost:8000', true);
+     httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+     httpRequest.send("fav_id=1");
+   }
+ </script>
+</body>
+</html>
