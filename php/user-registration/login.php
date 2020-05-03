@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 require_once("database.php");
 
@@ -11,24 +11,19 @@ function findUserByEmail($dbh, $email)
   return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
+$errors = [];
 if (!empty($_POST)) {
   $user = findUserByEmail($dbh, $_POST["email"]);
 
   if (password_verify($_POST["password"], $user["password"])) {
     // ログイン状態にする
     $_SESSION["login"] = true;
-    $_SESSION["user"]  = $user; 
+    $_SESSION["user"]  = $user;
     header('Location: mypage.php');
     exit;
   } else {
-    echo 'Invalid password.';
+    $errors[] = 'メールアドレスまたはパスワードに誤りがあります。';
   }
-}
-
-if ($_SESSION["login"]) {
-  echo "ログインしています。";
-} else {
-  echo "ログインしていません。";
 }
 ?>
 
@@ -37,19 +32,36 @@ if ($_SESSION["login"]) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>ユーザー認証機能</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<?php include("menu.php"); ?> 
-<h1>ログイン</h1>
- <form action="./login.php" method="POST">
-  <div>
-    メールアドレス
-    <input type="email" name="email"> 
-    パスワード
-    <input type="password" name="password"> 
-    <button type="submit">ログイン</button>
+  <?php include("menu.php"); ?>
+  <h1>ログイン</h1>
+
+  <?php if(!empty($errors)): ?> 
+    <ul class="error-box">
+    <?php foreach($errors as $error): ?> 
+      <li><?php echo $error; ?></li>
+    <?php endforeach ?> 
+    </ul>
+  <?php endif ?>
+
+  <div class="bg-example">
+    <form action="./login.php" method="POST">
+
+      <div class="form-group">
+        
+        <label for="exampleInputEmail">メールアドレス</label>
+        <input type="email" name="email" id="exampleInputEmail" value="<?php echo $_POST['email']?>">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword">パスワード</label>
+        <input type="password" name="password" id="exampleInputPassword">
+      </div>
+        <button type="submit">ログイン</button>
+    </form>
   </div>
- </form> 
 </body>
+
 </html>
