@@ -53,11 +53,11 @@ if (!empty($_POST)) {
       <div class="form-group">
         
         <label for="exampleInputEmail">メールアドレス</label>
-        <input type="email" name="email" id="exampleInputEmail" value="<?php echo $_POST['email']?>">
+        <input type="email" name="email" id="exampleInputEmail" value="<?php echo $_POST['email']?>" required>
       </div>
       <div class="form-group">
         <label for="exampleInputPassword">パスワード</label>
-        <input type="password" name="password" id="exampleInputPassword">
+        <input type="password" name="password" id="exampleInputPassword" required>
       </div>
         <button type="submit">ログイン</button>
     </form>

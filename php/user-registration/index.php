@@ -57,15 +57,15 @@ if (!empty($_POST)) {
     <form action="./index.php" method="post">
       <div class="form-group">
         <label for="exampleInputName">名前</label>
-        <input type="text" name="user_name" id="exampleInputName" placeholder="名前">
+        <input type="text" name="user_name" id="exampleInputName" placeholder="名前" required>
       </div>
       <div class="form-group">
         <label for="exampleInputEmail">メールアドレス</label>
-        <input type="email" name="email" id="exampleInputEmail" placeholder="メールアドレス">
+        <input type="email" name="email" id="exampleInputEmail" placeholder="メールアドレス" required>
       </div>
       <div class="form-group">
         <label for="exampleInputPassword">パスワード</label>
-        <input type="password" name="password" id="exampleInputPassword" placeholder="パスワード">
+        <input type="password" name="password" id="exampleInputPassword" placeholder="パスワード" required>
       </div>
       <button type="submit">登録</button>
     </form>
