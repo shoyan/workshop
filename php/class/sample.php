@@ -15,7 +15,7 @@ class Model {
   }
 }
 
-class User extends Model {
+class User2 extends Model {
   // プロパティ：名前
   public $name;
 
