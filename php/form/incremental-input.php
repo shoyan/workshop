@@ -59,11 +59,6 @@ if (!empty($_POST)) {
       // div#containerの中に追加
       document.getElementById('container').appendChild(clone);
     }
-
-    function clickBtn2() {
-      // 要素の削除
-      document.getElementById('container').removeChild();
-    }
   </script>
 </body>
 
