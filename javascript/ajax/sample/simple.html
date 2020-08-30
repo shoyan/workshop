@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>カウントアップ</h1>
+  <button class="request">request!</button>
+  <div id="count"></div>
+
+  <script>
+    const httpRequest = new XMLHttpRequest();
+
+    function request() {
+     const html = document.querySelector("#count")
+
+     httpRequest.onreadystatechange = function(){
+        // ここでサーバーからの応答を処理します。
+        if (httpRequest.readyState === XMLHttpRequest.DONE) {
+            if (httpRequest.status === 200) {
+              const response = JSON.parse(httpRequest.responseText)
+              html.innerText = response.count;
+            } else {
+              alert('リクエストに問題が発生しました');
+            }
+        }
+     };
+      httpRequest.open('GET', 'http://localhost:8080/sample/simple-count.php', true);
+      httpRequest.send();
+    }
+
+    const requestDom = document.querySelector('.request');
+    requestDom.addEventListener('click', request);
+  </script>
+</body>
+</html>
