@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .row {
+      margin: 20px;
+    }
+    .item {
+      display: flex;
+      margin: 20px;
+    }
+    .item div {
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="row">
+    <div class="item">
+      <button class="js-done">完了</button>
+      <div class="task">タスク1</div>
+      <div class="deadline">2020/08/30</div>
+    </div>
+    <div class="item">
+      <button class="js-done">完了</button>
+      <div class="task">タスク2</div>
+      <div class="deadline">2020/08/31</div>
+    </div>
+     <div class="item">
+      <button class="js-done">完了</button>
+      <div class="task">タスク3</div>
+      <div class="deadline">2020/09/01</div>
+    </div>
+  </div>
+  <script>
+    const doneList = document.querySelectorAll(".js-done")
+    doneList.forEach(function(done) {
+      done.addEventListener('click', function(elem) {
+        const parentItem = elem.target.parentElement;
+        const task = parentItem.querySelector(".task");
+        const deadline = parentItem.querySelector(".deadline");
+        if(task.style.textDecoration == "line-through"){
+          task.style.textDecoration = "none";
+          deadline.style.textDecoration = "none";
+        }else{
+          task.style.textDecoration = "line-through";
+          deadline.style.textDecoration = "line-through";
+        }
+      });
+    });
+  </script>
+</body>
+</html>
