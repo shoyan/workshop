@@ -22,6 +22,7 @@ $shoppingCart = $_SESSION['shopping_cart'];
     <input type="hidden" name="item_id" value="1">
     <input type="hidden" name="item_name" value="商品A">
     <input type="hidden" name="item_count" value="1">
+    <input type="hidden" name="count_updated_method" value="add">
     <button type="submit">カートにいれる</button>
   </form>
 </div>
@@ -32,6 +33,7 @@ $shoppingCart = $_SESSION['shopping_cart'];
     <input type="hidden" name="item_id" value="2">
     <input type="hidden" name="item_name" value="商品B">
     <input type="hidden" name="item_count" value="1">
+    <input type="hidden" name="count_updated_method" value="add">
     <button type="submit">カートにいれる</button>
   </form>
 </div>

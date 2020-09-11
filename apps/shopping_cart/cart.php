@@ -24,6 +24,10 @@ if (!empty($_POST)) {
     // ショッピングカート内に同じ商品がないかを検索する。あれば上書きする
     foreach ($_SESSION['shopping_cart'] as $index => $item) {
       if ($item['item_id'] == $postedItem['item_id']) {
+        // count_updated_method=addの場合は件数を追加する
+        if (isset($_POST['count_updated_method']) && $_POST['count_updated_method'] === 'add') {
+          $postedItem['item_count'] += $item['item_count'];
+        }
         // 商品を上書きする
         $_SESSION['shopping_cart'][$index] = $postedItem;
 
