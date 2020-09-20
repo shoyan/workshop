@@ -39,7 +39,17 @@ function getNextData($id) {
   return [];
 }
 
-$id = $_GET['id'];
+// 数値に変換する
+$id = intval($_GET['id']);
+$maxId = 10;
+// idのチェック
+// 数値で0以上maxID以下であることをチェックする。
+// 条件を満たさない場合はid=1にリダイレクトする。
+if (empty($id) || $id <= 0 || $id > $maxId) {
+  header('location: /?id=1');
+  exit;
+}
+
 $prev = getPrevData($id);
 $next = getNextData($id);
 ?>
