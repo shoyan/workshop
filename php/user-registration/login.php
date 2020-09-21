@@ -1,15 +1,7 @@
 <?php
 session_start();
 require_once("database.php");
-
-function findUserByEmail($dbh, $email)
-{
-  $sql = 'SELECT * FROM users WHERE email = ?';
-  $stmt = $dbh->prepare($sql);
-  $data[] = $email;
-  $stmt->execute($data);
-  return $stmt->fetch(PDO::FETCH_ASSOC);
-}
+require_once("function.php");
 
 $errors = [];
 if (!empty($_POST)) {

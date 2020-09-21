@@ -43,3 +43,10 @@ ADD
 ALTER TABLE `users`
 MODIFY
   `id` int(11) NOT NULL AUTO_INCREMENT;
+
+
+ALTER TABLE `users`
+ADD `temp_pass` VARCHAR(255) NULL
+AFTER `password`,
+  ADD `temp_pass_limit_time` DATETIME NULL
+AFTER `temp_pass`;
