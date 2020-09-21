@@ -83,11 +83,11 @@ if (empty($errors)) {
     <form action="./reissue.php?token=<?php echo $tempPass; ?>" method="post">
       <div>
         <label for="password">パスワード</label>
-        <input type="password" name="password" id="password">
+        <input type="password" name="password" id="password" required>
       </div>
       <div>
         <label for="confirm_password">パスワード(確認用)</label>
-        <input type="password" name="confirm_password" id="confirm_password">
+        <input type="password" name="confirm_password" id="confirm_password" required>
       </div>
       <button type="submit">パスワードを再設定する</button>
     </form>

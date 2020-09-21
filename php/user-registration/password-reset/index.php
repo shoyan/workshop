@@ -68,7 +68,7 @@ if (!empty($mail)) {
     <form action="./index.php" method="post">
       <p>アカウントに関連付けられているEメールアドレスを入力してください。パスワード再設定のメールが送信されます。</p>
       <label for="email">Eメールアドレス</label>
-      <input type="text" name="email" id="email">
+      <input type="text" name="email" id="email" required>
       <button type="submit">送信する</button>
     </form>
   </div>
