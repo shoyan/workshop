@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul id="result"></ul>
+
+  <p>
+    <a href="./cart.html">ショッピングカートサンプル</a>
+  </p>
+  <script>
+    // ショッピングカートを作成
+    const myCart = {
+      items: []
+    }
+    // ショッピングカートに商品を登録
+    myCart.items.push({
+      id: 1,
+      name: 'サッカーボール',
+      counts: 2
+    });
+    myCart.items.push({
+      id: 2,
+      name: 'スパイク',
+      counts: 3
+    });
+
+    // ローカルストレージにデータを登録。登録の際にオブジェクトを文字列に変換
+    localStorage.setItem('myCart', JSON.stringify(myCart));
+
+    // ローカルストレージからデータを取得
+    const json = localStorage.getItem('myCart');
+    // 文字列をオブジェクトに変換
+    const cart = JSON.parse(json);
+
+    // 画面に商品情報を表示する　
+    const result = document.querySelector('#result');
+    cart.items.forEach(element => {
+      const li = document.createElement('li');
+      li.textContent = `id: ${element.id} name: ${element.name} counts: ${element.counts}`;
+      result.appendChild(li);
+    });
+  </script>
+</body>
+</html>

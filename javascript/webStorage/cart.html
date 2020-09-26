@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScriptを使ったショッピングカート</title>
+  <style>
+    form {
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+  <form action="" method="get" data-id="1">
+    商品A(商品ID1)
+    <select name="counts" class="counts" data-id="1">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+    <input type="button" value="カートに入れる" class="cart" data-id="1">
+    <input type="button" value="カートから削除する" class="cart-clear" data-id="1">
+  </form>
+  <form action="" method="get" data-id="2">
+    商品B(商品ID2)
+    <select name="counts" class="counts" data-id="2">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+    <input type="button" value="カートに入れる" class="cart" data-id="2">
+    <input type="button" value="カートから削除する" class="cart-clear" data-id="2">
+  </form>
+
+  <ul id="result"></ul>
+ 
+  <script>
+    const showCart = () => {
+        const myCart = JSON.parse(localStorage.getItem('myCart'))
+        const result = document.querySelector('#result')
+        result.innerHTML = ''
+        myCart.items.forEach(function(item) {
+          const li = document.createElement('li')
+          li.innerText = `商品ID: ${item.id} 個数: ${item.counts}`
+          result.appendChild(li)
+        })
+    }
+    // 画面が読み込まれた後に実行する処理
+    window.onload = function() {
+      showCart()
+    }
+
+    // カートに追加する処理
+    document.querySelectorAll(".cart").forEach(function(elem) {
+      elem.addEventListener('click', function(e) {
+        const myCart = JSON.parse(localStorage.getItem('myCart'))
+        const form = e.target.parentNode
+        const id = form.dataset.id
+        const counts = form.querySelector('.counts').value
+        myCart.items = myCart.items.filter(item => item.id != id).concat({
+          id: id,
+          counts: counts
+        })
+        localStorage.setItem('myCart', JSON.stringify(myCart))
+        showCart()
+      })
+    })
+
+    // カートの中身を削除する処理
+    document.querySelectorAll(".cart-clear").forEach(function(elem) {
+      elem.addEventListener('click', function(e) {
+        const myCart = JSON.parse(localStorage.getItem('myCart'))
+        const form = e.target.parentNode
+        const id = form.dataset.id
+        myCart.items = myCart.items.filter(item => item.id != id)
+        localStorage.setItem('myCart', JSON.stringify(myCart))
+        showCart()
+      })
+    })
+  </script>
+</body>
+</html>
