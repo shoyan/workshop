@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script> 
+  <style>
+    body {
+      margin: 0;
+    }
+    .swiper-container {
+        width: 100%;
+        /* height: 300px; */
+    }
+    img {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+<!-- スライドショー -->
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="https://unetable.jp/img/hd_img05@2x.jpg" alt="">
+        </div>
+        <div class="swiper-slide">
+          <img src="https://unetable.jp/img/hd_img01_b@2x.jpg" alt="">
+        </div>
+        <div class="swiper-slide">
+          <img src="https://unetable.jp/img/hd_img02@2x.jpg" alt="">
+        </div>
+    </div>
+
+    <!-- ページネーション -->
+    <div class="swiper-pagination swiper-pagination-black"></div>
+
+    <!-- 矢印ボタン -->
+    <div class="swiper-button-prev swiper-button-black"></div>
+    <div class="swiper-button-next swiper-button-black"></div>
+</div>
+
+<script>
+var mySwiper = new Swiper('.swiper-container', {
+  direction: 'horizontal',
+  loop: true,
+  effect: 'fade',
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  // 3秒毎に自動でスライドする
+  autoplay: {
+    delay: 3000,
+  },
+});
+</script>
+</body>
+</html>
