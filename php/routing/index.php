@@ -4,6 +4,7 @@ require './vendor/autoload.php';
 
 $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $router) {
   $router->addRoute('GET', '/', 'index');
+  $router->addRoute('GET', '/about', 'about');
   $router->addRoute('GET', '/profile/@{name:\w+}', 'profile');
   $router->addRoute('GET', '/old_url', 'old_url');
   $router->addRoute('GET', '/new_url', 'new_url');
@@ -39,6 +40,11 @@ switch ($routeInfo[0]) {
 function index()
 {
   return 'トップページです';
+}
+
+function about()
+{
+  return 'about';
 }
 
 function profile($vars)
