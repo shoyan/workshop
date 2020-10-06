@@ -23,11 +23,6 @@
         <input type="text" class="form-control" name="task_contents[]">
         <input type="date" class="form-control" name="task_deadline[]">
       </div>
-      <div class="form-group">
-        <div class="col-sm-1">
-          <a href="/contact.html" class="btn"><i class="fab fa-twitter-square fa-2x"></i></a>
-        </div>
-      </div>
     </div>
   </template>
 
