@@ -8,7 +8,7 @@ $checkout_items = $_SESSION['shopping_cart'];
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>ご購入の商品を確認</title>
 </head>
 
 <body>

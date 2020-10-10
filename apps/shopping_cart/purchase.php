@@ -1,5 +1,6 @@
 <?php
 session_start();
+date_default_timezone_set('Asia/Tokyo');
 
 // 注文履歴に追加する
 $_SESSION['shopping_history'][] = [
