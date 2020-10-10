@@ -55,7 +55,7 @@ $items = $_SESSION['shopping_cart'];
 </head>
 
 <body>
-  <a href="./">Topへ戻る</a>
+  <a href="./">お買い物を続ける</a>
   <h1>ショッピングカート</h1>
 
   <?php if (empty($items)) : ?>
@@ -82,7 +82,9 @@ $items = $_SESSION['shopping_cart'];
         </p>
       </div>
     <?php endforeach ?>
+    <a href="./checkout.php"><button>レジに進む</button></a>
   <?php endif ?>
+
 
   <script>
     // 数量が変更されたら更新を行う

@@ -12,6 +12,8 @@ $shoppingCart = $_SESSION['shopping_cart'];
   <title>ショッピングカートサンプル</title>
 </head>
 <body>
+<a href="./shopping_history.php">注文履歴へ</a>
+
 <p>
   <a href="./cart.php">カート(<?php echo count($shoppingCart) ?>)</a>
 </p>
