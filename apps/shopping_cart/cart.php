@@ -18,8 +18,9 @@ if (!empty($_POST)) {
     $_SESSION['shopping_cart'][] = $postedItem;
   // ショッピングカートが空でない場合
   } else {
-    // ショッピングカートに登録したことを判定するフラグ　
-    $register = false;
+    // ショッピングカートに登録するフラグ　
+    // trueの場合はショッピングカートに追加
+    $register = true;
 
     // ショッピングカート内に同じ商品がないかを検索する。あれば上書きする
     foreach ($_SESSION['shopping_cart'] as $index => $item) {
@@ -31,13 +32,14 @@ if (!empty($_POST)) {
         // 商品を上書きする
         $_SESSION['shopping_cart'][$index] = $postedItem;
 
-        // ショッピングカートに登録したのでtrueにする
-        $register = true;
+        // すでに同じ商品がショッピングカートに登録済み
+        // 追加する必要がないのでfalseにする
+        $register = false;
       }
     }
 
-    // 登録フラグがたっていない場合はショッピングカートに登録する
-    if (!$register) {
+    // 登録フラグがたっていればショッピングカートに登録する
+    if ($register) {
       $_SESSION['shopping_cart'][] = $postedItem;
     }
   }
