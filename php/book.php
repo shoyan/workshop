@@ -58,10 +58,28 @@ array_push($items, [
       padding: 20px;
       margin: 10px;
     }
-    .item-box img {
+    .item-box img, 
+    .item-box-col img {
       width: 250px;
       margin: 0 auto;
       display: block;
+    }
+
+    .item-box-col {
+      display: flex;
+      border-bottom: 1px solid #999;
+      margin: 20px;
+    }
+    .right {
+      margin-left: 30px;
+    }
+    .left {
+      margin: 20px;
+    }
+
+    .line {
+      border-bottom: 1px solid #999;
+      margin: 20px;
     }
   </style>
 </head>
@@ -72,11 +90,28 @@ array_push($items, [
       <div>
         <img src="<?php echo $item['image_url'] ?>" alt="">
       </div>
-      <p><?php echo $item['title'] ?></p>
-      <p>¥<?php echo number_format($item['price']) ?></p>
+      <div>
+        <p><?php echo $item['title'] ?></p>
+        <p>¥<?php echo number_format($item['price']) ?></p>
+      </div>
     </div>
     <?php endforeach ?>
+  </div>
 
+  <div class="line"></div>
+
+  <div>
+    <?php foreach($items as $item): ?>
+    <div class="item-box-col">
+      <div class="left">
+        <img src="<?php echo $item['image_url'] ?>" alt="">
+      </div>
+      <div class="right">
+        <p><?php echo $item['title'] ?></p>
+        <p>¥<?php echo number_format($item['price']) ?></p>
+      </div>
+    </div>
+    <?php endforeach ?>
   </div>
 </body>
 </html>
