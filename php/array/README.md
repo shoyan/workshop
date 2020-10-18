@@ -8,3 +8,5 @@
   * 配列の中身をpタグで囲んで表示する
 * [sample4.php](sample4.php)
   * array_filterを使って特定の条件の配列を取得する
+* [sample5.php](sample5.php)
+  * 配列とHTMLを組み合わせて商品の一覧を表示
