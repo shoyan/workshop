@@ -22,4 +22,3 @@
 <a href="./index.html">戻る</a>
 
 </html>
-<?php
