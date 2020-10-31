@@ -1,0 +1,19 @@
+{
+  "development": {
+    "username": "root",
+    "password": null,
+    "database": "todo_development",
+    "host": "todo_development.db",
+    "dialect": "sqlite"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "todo_test",
+    "host": "todo_test.db",
+    "dialect": "sqlite"
+  },
+  "production": {
+    "use_env_variable": "DATABASE_URL"
+  }
+}
