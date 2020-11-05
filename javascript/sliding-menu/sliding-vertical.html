@@ -76,9 +76,13 @@ nav.open-menu {
 <script>
 const btn = document.querySelector('.btn-menu');
 const nav = document.querySelector('nav');
- 
+
+// ボタンがクリックされたときに処理を行う 
 btn.addEventListener('click', () => {
+
+  // class=open-menuの切替を行う
   nav.classList.toggle('open-menu')
+
   if (btn.innerHTML === 'メニュー') {
     btn.innerHTML = '閉じる';
   } else {

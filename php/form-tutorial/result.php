@@ -1,3 +1,12 @@
+<?php if ($yourName): ?>
+  <p>こんにちは！<?php echo $yourName; ?>さん！</p>
+<?php elseif (empty($yourName)): ?>
+  <p><?php echo '名前を入力してください！'; ?></p>
+<?php endif ?>
+<?php
+ini_set('display_errors', 1);
+echo $_POST['message'];
+?>
 <!DOCTYPE html>
 <html lang="ja">
 

@@ -1,5 +1,7 @@
 <?php
+require_once('functions.php');
 session_start();
+$csrfToken = generateCsrfToken();
 $checkout_items = $_SESSION['shopping_cart'];
 ?>
 <!DOCTYPE html>
@@ -21,7 +23,8 @@ $checkout_items = $_SESSION['shopping_cart'];
       <p><?php echo $item['item_name'];?></p>
       <p>数量: <?php echo $item['item_count'];?></p>
     <?php endforeach; ?>
-    <form action="./purchase.php">
+    <form action="./purchase.php" method="post">
+      <input type="hidden" name="token" value="<?php echo $csrfToken; ?>">
       <button>注文を確定する</button>
     </form>
     <?php endif; ?>
