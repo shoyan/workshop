@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li {
+            list-style-type: none;
+            position: relative;
+            margin: 2px;
+            padding: 0.5em 0.5em 0.5em 2em;
+            background: lightgray;
+            font-family: sans-serif;
+        }
+        li.done {
+            background-color: #ccff99;
+        }
+        li.done::before {
+            content: '';
+            position: absolute;
+            border-color: #009933;
+            border-style: solid;
+            border-width: 0 0.3em 0.25em 0;
+            height: 1em;
+            top: 1.3em;
+            left: 0.6em;
+            margin-top: -1em;
+            width: 0.5em;
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>牛乳を買う</li>
+        <li>犬の散歩をする</li>
+        <li>エクササイズ</li>
+        <li>コードを書く</li>
+        <li>音楽を演奏する</li>
+        <li>リラックスする</li>
+      </ul> 
+
+      <a href="https://developer.mozilla.org/ja/docs/Web/CSS/::before" target="_blank">::before (:before) - CSS: カスケーディングスタイルシート | MDN</a>
+      <script>
+          var list = document.querySelector('ul')
+          list.addEventListener('click', function(ev) {
+              if (ev.target.tagName === 'LI') {
+                  ev.target.classList.toggle('done')
+              }
+          }, false)
+      </script>
+</body>
+</html>
