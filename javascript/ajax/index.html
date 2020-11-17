@@ -6,27 +6,31 @@
   <title>Document</title>
 </head>
 <body>
- <div onclick="addFav(this)"><button>いいね！</button><span class="iine">0</span></div>
+ <div onclick="hello()"><button>click</button><span class="message"></span></div>
 
  <script>
-   function addFav(event) {
-     httpRequest = new XMLHttpRequest();
-     const iine = event.querySelector("span.iine")
+   function hello() {
+      const message = document.querySelector(".message")
 
-     httpRequest.onreadystatechange = function(){
-        // ここでサーバーからの応答を処理します。
-        if (httpRequest.readyState === XMLHttpRequest.DONE) {
-            if (httpRequest.status === 200) {
-              const response = JSON.parse(httpRequest.responseText)
-              iine.innerText = response.fav_count 
-            } else {
-              alert('リクエストに問題が発生しました');
-            }
-        }
-     }; 
-     httpRequest.open('POST', 'http://localhost:8000', true);
-     httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-     httpRequest.send("fav_id=1");
+      // リクエストを送信するためのオブジェクトを作成
+      httpRequest = new XMLHttpRequest();
+      // サーバーからデータを受信した時の処理
+      httpRequest.onreadystatechange = function(){
+         // ここでサーバーからの応答を処理します。
+         if (httpRequest.readyState === XMLHttpRequest.DONE) {
+             if (httpRequest.status === 200) {
+               const response = httpRequest.responseText
+               message.textContent = response
+             } else {
+               alert('リクエストに問題が発生しました');
+             }
+         }
+      }; 
+
+      // リクエスト先の設定 
+      httpRequest.open('GET', 'http://localhost:8080/api/hello.php');
+      // リクエストを送信
+      httpRequest.send();
    }
  </script>
 </body>

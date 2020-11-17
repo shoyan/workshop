@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+     li {
+         -webkit-transition: all .5s ease;
+         transition: all .5s ease;
+         opacity: 0;
+     }
+     
+     li.loaded {
+         opacity: 1;
+     }
+  </style>
+</head>
+<body>
+ <button onclick="getPosts()">click</button>
+ <ul id="posts"></ul>
+
+ <script>
+   function getPosts() {
+     httpRequest = new XMLHttpRequest();
+     const ul = document.querySelector("#posts")
+
+     ul.addEventListener('DOMNodeInserted', function(element) {
+       setTimeout( function() {
+                element.target.classList.add("loaded");
+       }, 10);
+     });
+
+     httpRequest.onreadystatechange = function(){
+        // ここでサーバーからの応答を処理します。
+        if (httpRequest.readyState === XMLHttpRequest.DONE) {
+            if (httpRequest.status === 200) {
+              const response = JSON.parse(httpRequest.responseText)
+              response.forEach(element => {
+                const titleLi = document.createElement('li')
+                titleLi.innerText = element.title
+                ul.appendChild(titleLi)
+
+                const contentLi = document.createElement('li')
+                contentLi.innerText = element.content
+                ul.appendChild(contentLi)
+              });
+            } else {
+              alert('リクエストに問題が発生しました');
+            }
+        }
+     }; 
+     httpRequest.open('POST', 'http://localhost:8080/api/posts.php', true);
+     httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+     httpRequest.send();
+   }
+ </script>
+</body>
+</html>
