@@ -44,7 +44,10 @@ if (!empty($_GET['page'])) {
     $page = 1;
 }
 
+// 取得するデータを計算
 $start = $offset * ($page - 1);
+// 必要なデータのみを取得
 $data = array_slice($posts, $start, $offset);
+
 header("Content-Type: application/json; charset=utf-8");
 echo json_encode($data);
