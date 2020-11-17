@@ -21,8 +21,11 @@
  <ul id="posts"></ul>
 
  <script>
+   let page = 0;
    function getPosts() {
      const ul = document.querySelector("#posts")
+     // pageをインクリメント
+     page+=1;
 
      // リクエストを送信するオブジェクトを作成
      httpRequest = new XMLHttpRequest();
@@ -57,7 +60,7 @@
      }; 
 
      // リクエスト先を設定
-     httpRequest.open('GET', 'http://localhost:8080/api/posts.php');
+     httpRequest.open('GET', 'http://localhost:8080/api/posts.php?page=' + page);
      // リクエストを送信
      httpRequest.send();
    }
