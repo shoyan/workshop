@@ -22,27 +22,32 @@
 
  <script>
    function getPosts() {
-     httpRequest = new XMLHttpRequest();
      const ul = document.querySelector("#posts")
 
+     // リクエストを送信するオブジェクトを作成
+     httpRequest = new XMLHttpRequest();
+
+    // 要素が追加された時に実行される
      ul.addEventListener('DOMNodeInserted', function(element) {
-       setTimeout( function() {
-                element.target.classList.add("loaded");
-       }, 10);
+        setTimeout(function() {
+          element.target.classList.add("loaded");
+        }, 10);
      });
 
+     // データを受信した時に実行する処理
      httpRequest.onreadystatechange = function(){
         // ここでサーバーからの応答を処理します。
         if (httpRequest.readyState === XMLHttpRequest.DONE) {
             if (httpRequest.status === 200) {
+              // JSONをオブジェクトに変換
               const response = JSON.parse(httpRequest.responseText)
               response.forEach(element => {
                 const titleLi = document.createElement('li')
-                titleLi.innerText = element.title
+                titleLi.textContent = element.title
                 ul.appendChild(titleLi)
 
                 const contentLi = document.createElement('li')
-                contentLi.innerText = element.content
+                contentLi.textContent = element.content
                 ul.appendChild(contentLi)
               });
             } else {
@@ -50,8 +55,10 @@
             }
         }
      }; 
-     httpRequest.open('POST', 'http://localhost:8080/api/posts.php', true);
-     httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+     // リクエスト先を設定
+     httpRequest.open('GET', 'http://localhost:8080/api/posts.php');
+     // リクエストを送信
      httpRequest.send();
    }
  </script>
