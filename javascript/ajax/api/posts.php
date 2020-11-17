@@ -44,12 +44,7 @@ if (!empty($_GET['page'])) {
     $page = 1;
 }
 
-if ($page == '1') {
-    $start = 0;
-} else {
-    $start = $offset * ($page - 1);
-}
-
+$start = $offset * ($page - 1);
 $data = array_slice($posts, $start, $offset);
 header("Content-Type: application/json; charset=utf-8");
 echo json_encode($data);
