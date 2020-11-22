@@ -1,15 +1,15 @@
-a {
+#content a {
    text-decoration: none;
 }
-a:link{
+#content a:link{
   color: #000000;
 }
-a:visited{
+#content a:visited{
   color: #000000;
 }
-a:hover{
+#content a:hover{
   color: #000000;
 }
-a:active{
+#content a:active{
   color: #000000;
 }

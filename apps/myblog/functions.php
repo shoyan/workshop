@@ -22,6 +22,31 @@ function getAllPosts() {
 }
 
 /**
+ * 全ての投稿の件数を取得する
+ */
+function getAllPostCount() {
+    global $dbh;
+    $sql = 'SELECT count(*) as count FROM posts';
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute();
+    $data = $stmt->fetch(PDO::FETCH_ASSOC);
+    return (int)$data['count'];
+}
+
+/**
+ * 全ての投稿を取得する
+ */
+function findPosts($limit = 10, $offset = 0) {
+    global $dbh;
+    $sql = 'SELECT * FROM posts limit :limit offset :offset';
+    $stmt = $dbh->prepare($sql);
+    $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+    $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+/**
  * 投稿を1件取得する
  */
 function findPostById($postId) {
