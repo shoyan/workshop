@@ -2,7 +2,11 @@
 // セッションを有効にする
 session_start();
 
-$shoppingCart = $_SESSION['shopping_cart'];
+if (empty($_SESSION['shopping_cart'])) {
+  $shoppingCart = [];
+} else {
+  $shoppingCart = $_SESSION['shopping_cart'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="ja">
