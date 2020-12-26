@@ -20,15 +20,6 @@ try {
   exit;
 }
 
-// データベースに登録
-function create($dbh, $title, $message) {
-  $stmt = $dbh->prepare("INSERT INTO memo (title,message) VALUES (?,?)");
-  $data = [];
-  $data[] = $title;
-  $data[] = $message;
-  $stmt->execute($data);
-}
-
 // データベースからデータを取得する
 function selectAll($dbh) {
   $stmt = $dbh->prepare('SELECT * FROM memo ORDER BY updatedAt DESC');
@@ -36,9 +27,7 @@ function selectAll($dbh) {
   return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-// create($dbh, "PHP", "PHPから登録します!");
 $result = selectAll($dbh);
-echo "処理が完了しました";
 ?>
 
 <!DOCTYPE html>
@@ -49,9 +38,15 @@ echo "処理が完了しました";
   <title>Document</title>
 </head>
 <body>
- <?php foreach($result as $row): ?>
-  <div><?php echo "title: " . $row["title"]; ?></div>
-  <div><?php echo "message: " . $row["message"]; ?></div>
- <?php endforeach ?> 
-</body>
+  <h1>メモ一覧</h1>
+  <p><a href="./form.php">メモの登録</a></p>
+  <?php if (!empty($result)): ?>
+    <?php foreach($result as $row): ?>
+     <div><?php echo "title: " . $row["title"]; ?></div>
+     <div><?php echo "message: " . $row["message"]; ?></div>
+    <?php endforeach ?> 
+ <?php else: ?>
+  <p>まだメモは登録されていません。</p>
+  <?php endif ?>
+ </body>
 </html>
