@@ -72,7 +72,6 @@
         }
 
         .menu-trigger.active div:nth-of-type(1) {
-            -webkit-transform: translateY(8px) rotate(-45deg);
             transform: translateY(8px) rotate(-45deg);
         }
 
@@ -81,11 +80,13 @@
         }
 
         .menu-trigger.active div:nth-of-type(3) {
-            -webkit-transform: translateY(-8px) rotate(45deg);
             transform: translateY(-8px) rotate(45deg);
         }
 
         @media screen and (max-width: 750px) {
+            #main {
+                margin-top: 90px;
+            }
 
             header {
                 position: absolute;
@@ -125,7 +126,6 @@
 
             header .menu.open {
                 display: block;
-                z-index: 9;
             }
 
             header .menu ul {
@@ -146,7 +146,7 @@
                     <div></div>
                 </a></div>
             <div class="menu">
-                <ul class="en">
+                <ul>
                     <li><a href="#">CALENDAR</a></li>
                     <li><a href="#">CANVAS</a></li>
                     <li><a href="#">GIFT</a></li>
