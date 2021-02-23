@@ -15,16 +15,16 @@ $data['user_name'] = !empty($_POST['user_name'])? $_POST['user_name'] : '';
 $data['email'] = !empty($_POST['email'])? $_POST['email'] : '';
 $data['password'] = !empty($_POST['password'])? $_POST['password'] : '';
 
-// データが送信された場合
+// POSTリクエストの場合はバリデーションを実行する
 if (!empty($_POST)) {
-  if (empty($data['user_name'])) {
-    $errors[] = '名前を入力してください。';
+  if (empty($_POST['user_name'])) {
+    $errors['user_name'] = '名前を入力してください。';
   }
-  if (empty($data['email'])) {
-    $errors[] = 'メールアドレスを入力してください。';
+  if (empty($_POST['email'])) {
+    $errors['email'] = 'メールアドレスを入力してください。';
   }
-  if (empty($data['password'])) {
-    $errors[] = 'パスワードを入力してください。';
+  if (empty($_POST['password'])) {
+    $errors['password'] = 'パスワードを入力してください。';
   }
 
   if (empty($errors)) {
