@@ -1,0 +1,115 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  color: #212529;
+}
+
+body,
+header,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #563d7c;
+  padding: 5px;
+}
+
+header ul {
+  display: flex;
+}
+
+header ul li {
+  padding: .5rem;
+  list-style: none;
+}
+
+header li.border a {
+  color: #ffe484;
+  border: 1px solid #ffe484;
+  padding: 5px;
+  border-radius: .25rem;
+}
+
+a {
+  color: #cbbde2;
+  text-decoration: none;
+}
+
+button {
+  padding: 5px 20px;
+  color: #666;
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  border-radius: .1rem;
+}
+
+h1 {
+  margin: 10px;
+  font-weight: 300;
+  text-align: center;
+}
+
+input {
+  display: block;
+  color: #495057;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  padding: .375rem .75rem;
+  width: 100%;
+}
+input.ok {
+  border: 1px solid blue;
+}
+input.error {
+  border: 1px solid red;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: .5rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.bg-example {
+  border: solid #f8f9fa;
+  width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.error-box {
+  width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.error-box li {
+  color: #dc3545;
+  font-size: .8rem;
+}
+
+.info {
+  margin: 10px;
+}
+
+.success {
+  text-align: center;
+  border: 1px solid blue;
+  margin: 20px;
+  padding: 10px;
+  background-color: aliceblue;
+}
