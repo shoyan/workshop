@@ -12,14 +12,15 @@ $result = false;
 // POSTデータは$data変数にいれる
 $data = $_POST;
 
-if (!empty($data)) {
-  if (empty($data['user_name'])) {
+// POSTリクエストの場合はバリデーションを実行する
+if (!empty($_POST)) {
+  if (empty($_POST['user_name'])) {
     $errors['user_name'] = '名前を入力してください。';
   }
-  if (empty($data['email'])) {
+  if (empty($_POST['email'])) {
     $errors['email'] = 'メールアドレスを入力してください。';
   }
-  if (empty($data['password'])) {
+  if (empty($_POST['password'])) {
     $errors['password'] = 'パスワードを入力してください。';
   }
 
