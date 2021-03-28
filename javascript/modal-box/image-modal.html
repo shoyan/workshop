@@ -6,7 +6,7 @@
   <title>Modal Box</title>
   <style>
     .modal {
-      /* display: none; */
+      display: none;
       position: fixed;
       z-index: 1;
       left:0;
@@ -19,7 +19,7 @@
 
     .modal-content {
       background-color: #fefefe;
-      margin: 15% auto;
+      margin: 20px auto;
       padding: 20px;
       border: 1px solid #888;
       width: 80%;
@@ -38,26 +38,59 @@
       text-decoration: none;
       cursor: pointer;
     }
+    .image-list {
+      display: flex;
+    }
+    .image-list li {
+      width: 400px;
+      list-style-type: none;
+      margin: 10px;
+    }
+    .image-list li img:hover {
+      cursor: pointer;
+    }
+    img {
+      width: 100%;
+    }
   </style>
 </head>
 <body>
-  <button id="myBtn">Open Modal</button>
-
   <div id="myModal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
-      <p>Some text in the Modal..</p>
+      <img src="image1.jpg" alt="">
     </div>
   </div>
 
+  <ul class="image-list">
+    <li>
+      <img src="image1.jpg" alt="">
+    </li>
+    <li>
+      <img src="image2.jpg" alt="">
+    </li>
+    <li>
+      <img src="image3.jpg" alt="">
+    </li>
+  </ul>
   <script>
     var modal = document.getElementById("myModal");
-    var btn = document.getElementById("myBtn");
+    // モーダル内のimgタグを取得
+    var modalImage = modal.querySelector("img");
     var span = document.getElementsByClassName("close")[0];
 
-    btn.onclick = function() {
-      modal.style.display = "block";
-    }
+    // 画像の一覧を取得している
+    var images = document.querySelectorAll('.image-list img');
+    // 画像の一覧1つ1つにオンクリック処理を設定していく
+    images.forEach(function(img) {
+      // 画像をクリックしたときにモーダルを表示する
+      img.onclick = function(event) {
+        // クリックした画像に画像を差し替えている
+        modalImage.src = event.target.src;
+        // モーダルを表示
+        modal.style.display = "block";
+      }
+    })
 
     span.onclick = function() {
       modal.style.display = "none";
