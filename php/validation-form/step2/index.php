@@ -68,6 +68,7 @@ if (!empty($_POST)) {
             class="<?php echo !empty($errors['user_name'])? 'error': 'ok'?>" 
             value="<?php echo $data['user_name'] ?>"
           >
+          <p class="error" style="color:red"><?php echo $errors['user_name']?></p>
         </div>
         <div class="form-group">
           <label for="exampleInputEmail">メールアドレス</label>
@@ -79,6 +80,7 @@ if (!empty($_POST)) {
             class="<?php echo !empty($errors['email'])? 'error': 'ok'?>" 
             value="<?php echo $data['email'] ?>"
           >
+          <p class="error" style="color:red"><?php echo $errors['email']?></p>
         </div>
         <div class="form-group">
           <label for="exampleInputPassword">パスワード</label>
@@ -90,6 +92,7 @@ if (!empty($_POST)) {
             class="<?php echo !empty($errors['password'])? 'error': 'ok'?>" 
             value="<?php echo $data['password'] ?>"
           >
+          <p class="error" style="color:red"><?php echo $errors['password']?></p>
         </div>
         <button type="submit">登録</button>
       </form>
