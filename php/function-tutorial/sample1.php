@@ -1,17 +1,9 @@
 <?php
-// 関数名
-// countArray
-
-// 機能
-// 引数として渡された配列のindex数を返す
-
-// 引数
-// 配列
-
-// 戻り値
-// 配列の数
-
-[1,2,3]; 
+/**
+ * 配列のデータ数を数える関数
+ * @param $arr 対象の配列
+ * @return 配列のデータ数
+ */
 function countArray($arr) {
   $num = count($arr);
   return $num;
