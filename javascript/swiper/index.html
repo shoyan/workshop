@@ -32,6 +32,18 @@
         <div class="swiper-slide">
           <img src="https://unetable.jp/img/hd_img02@2x.jpg" alt="">
         </div>
+        <div class="swiper-slide">
+          <img src="https://source.unsplash.com/random" alt="">
+        </div>
+        <div class="swiper-slide">
+          <img src="https://source.unsplash.com/daily" alt="">
+        </div>
+        <div class="swiper-slide">
+          <img src="https://source.unsplash.com/weekly?water" alt="">
+        </div>
+        <div class="swiper-slide">
+          <img src="https://source.unsplash.com/random" alt="">
+        </div>
     </div>
 
     <!-- ページネーション -->
@@ -45,7 +57,11 @@
 <script>
 var mySwiper = new Swiper('.swiper-container', {
   loop: true,
-  effect: 'fade',
+  effect: "slide", 
+  slidesPerView: 3,
+  slidesPerGroup: 3,
+  loopFillGroupWithBlank: true,
+  spaceBetween: 30,
   pagination: {
     el: '.swiper-pagination',
     clickable: true,
