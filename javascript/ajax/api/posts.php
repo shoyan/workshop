@@ -50,4 +50,7 @@ $start = $offset * ($page - 1);
 $data = array_slice($posts, $start, $offset);
 
 header("Content-Type: application/json; charset=utf-8");
-echo json_encode($data);
+echo json_encode([
+    "posts" => $data,
+    'total_count' => count($posts)
+]);
