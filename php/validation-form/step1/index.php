@@ -1,4 +1,12 @@
 <?php
+// エラー情報を表示する
+// https://www.php.net/manual/ja/errorfunc.configuration.php#ini.error-reporting
+ini_set('display_errors', "On");
+
+// 出力する PHP エラーの種類を設定する
+// https://www.php.net/manual/ja/function.error-reporting.php
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
+
 // エラーを格納する変数
 $errors = [];
 

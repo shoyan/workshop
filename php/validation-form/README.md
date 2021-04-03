@@ -1,26 +1,44 @@
 # Validation form
-バリデーション処理を学習します。
+フォームとバリデーション処理を学習します。
 
-## 起動方法
+## 事前準備
+### MAMPのインストール
+MAMPをインストールして起動しておいてください。
 
-PHPのビルトインサーバーで起動します。
+### ソースコードの設置
+`validation-form/`のフォルダをMAMPの`htdocs/`ディレクトリに置きます。
 
-```
-$ cd php/validation-form
-$ php -S localhost:8080
-```
+`htdocs/`フォルダの場所は次の通りです。OSによって異なるので注意してください。
+- Mac: `/Applications/MAMP/htdocs/`
+- Windows: `C:\MAMP\htdocs\`
 
-次のURLにアクセスします。
-
-`http://localhost:8080/step1/index.php`
+## 動作確認
 
 ## Step1
+
+次のURLにアクセスします。
+`http://localhost/validation-form/step1/index.php`
+
 バリデーションを実装したフォームです。
 入力しない場合はエラーメッセージが表示されます。
 
 ## Step2
-Step1は入力値が保持されません。入力値を保持するように改良したフォームです。
+
+次のURLにアクセスします。
+`http://localhost/validation-form/step2/index.php`
+
+Step1は入力値が保持されませんでした。step2は入力値を保持するように改良したフォームです。
+
+## Step3
+step3は入力値をデータベースに登録します。
+
+データベースの準備を行います。
+`step3/ddl.sql`をデータベースにインポートしてください。
+
+次のURLにアクセスします。
+`http://localhost/validation-form/step3/index.php`
 
 
 ## 補足情報
-step1もstep2も同じCSS(style.css)を利用しています。
+
+step1、step2、step3は同じCSS(style.css)を利用しています。

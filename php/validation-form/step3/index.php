@@ -79,13 +79,6 @@ if (!empty($_POST)) {
 
 <body>
   <h1>ユーザー登録</h1>
-  <?php if(!empty($errors)): ?> 
-    <ul class="error-box">
-    <?php foreach($errors as $error): ?> 
-      <li><?php echo $error; ?></li>
-    <?php endforeach ?> 
-    </ul>
-  <?php endif ?>
 
   <?php if($result): ?>
     <p class="success">処理が完了しました。</p>
@@ -103,6 +96,7 @@ if (!empty($_POST)) {
             class="<?php echo !empty($errors['user_name'])? 'error': 'ok'?>" 
             value="<?php echo $data['user_name'] ?>"
           >
+          <p class="error" style="color:red"><?php echo $errors['user_name']?></p>
         </div>
         <div class="form-group">
           <label for="exampleInputEmail">メールアドレス</label>
@@ -126,6 +120,7 @@ if (!empty($_POST)) {
             class="<?php echo !empty($errors['password'])? 'error': 'ok'?>" 
             value="<?php echo $data['password'] ?>"
           >
+          <p class="error" style="color:red"><?php echo $errors['password']?></p>
         </div>
         <button type="submit">登録</button>
       </form>
