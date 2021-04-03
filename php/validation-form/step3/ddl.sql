@@ -20,7 +20,7 @@ CREATE DATABASE IF NOT EXISTS workshop;
   --
   -- Table structure for table `users`
   --
-  CREATE TABLE `users` (
+  CREATE TABLE `workshop`.`users` (
     `id` int(11) NOT NULL,
     `user_name` varchar(255) NOT NULL,
     `email` varchar(400) NOT NULL,
@@ -34,7 +34,7 @@ CREATE DATABASE IF NOT EXISTS workshop;
   --
   -- Indexes for table `users`
   --
-ALTER TABLE `users`
+ALTER TABLE `workshop`.`users`
 ADD
   PRIMARY KEY (`id`);
 --
@@ -43,6 +43,6 @@ ADD
   --
   -- AUTO_INCREMENT for table `users`
   --
-ALTER TABLE `users`
+ALTER TABLE `workshop`.`users`
 MODIFY
   `id` int(11) NOT NULL AUTO_INCREMENT;
