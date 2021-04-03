@@ -3,7 +3,15 @@ define('DB_HOST', '127.0.0.1');
 define('DB_NAME', 'workshop');
 define('DB_USER', 'root');
 define('DB_PASSWORD', 'root');
-define('DB_PORT', '8889');
+define('DB_PORT', '3306');
+
+// エラー情報を表示する
+// https://www.php.net/manual/ja/errorfunc.configuration.php#ini.error-reporting
+ini_set('display_errors', "On");
+
+// 出力する PHP エラーの種類を設定する
+// https://www.php.net/manual/ja/function.error-reporting.php
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 // 文字化け対策
 $options = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET CHARACTER SET 'utf8'");
@@ -81,6 +89,7 @@ if (!empty($_POST)) {
 
   <?php if($result): ?>
     <p class="success">処理が完了しました。</p>
+    <p class="success"><a href="./show.php">ユーザー一覧ページへ</a></p>
   <?php else: ?>
     <div class="bg-example">
       <form action="./index.php" method="post">
