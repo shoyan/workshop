@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Coin List</h1>
+    <ul id="list"></ul>
+   <script>
+     function createList(data) {
+        const list = document.querySelector("#list");
+        const li = document.createElement("li");
+        li.textContent = data.id;
+        list.appendChild(li);
+     }
+     fetch('https://api.coingecko.com/api/v3/coins/list')
+       .then(response => response.json())
+       .then(data => {
+           data.forEach(function(d) {
+               createList(d);
+           });
+       })
+   </script>
+</body>
+</html>
