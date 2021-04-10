@@ -1,6 +1,12 @@
 <?php
+$taskList = [];
 if (!empty($_POST)) {
-  print_r($_POST);
+  foreach($_POST['task'] as $index => $task) {
+    if (!empty($_POST['task'][$index])) {
+      $taskList[$index]['task'] = $_POST['task'][$index];
+      $taskList[$index]['deadline'] = empty($_POST['deadline'][$index])? null : $_POST['deadline'][$index];
+    }
+  }
 }
 
 ?>
@@ -49,6 +55,14 @@ if (!empty($_POST)) {
 
     <button type="submit">送信</button>
   </form>
+  <?php if(!empty($taskList)): ?>
+  <ul>
+    <?php foreach($taskList as $task): ?>
+        <li>タスク名：<?php echo $task['task'] ?></li>
+        <li>期日：<?php echo $task['deadline'] ?></li>
+    <?php endforeach ?>
+  </ul>
+  <?php endif ?>
 
   <script>
     function clickBtn1() {
