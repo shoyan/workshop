@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html {
+            box-sizing: border-box;
+        }
+        *, *::before, *::after {
+            box-sizing: inherit;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', Meiryo, メイリオ, Osaka, 'MS PGothic', arial, helvetica, sans-serif;
+        }
+        header {
+            height: 60px;
+            background-color: darkgrey;
+        }
+        main {
+            height: 800px;
+            margin: 0 auto;
+            width: 80%;
+        }
+        h1,h2,h3,h4,h5 {
+            font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
+        }
+        h1.title,
+        h2.title {
+            border-bottom: 1px solid #999;
+            text-align: center;
+            font-size: 2rem;
+        }
+        h3.title {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: normal;
+        }
+        p {
+            line-height: 200%;
+        }
+        img {
+            width: 100%;
+        }
+        .container {
+            display: flex;
+        }
+        .rankings {
+            justify-content: space-evenly;
+        }
+        .rankings-bottom {
+            justify-content: space-between;
+        }
+        .rankings img {
+            object-fit: contain;
+        }
+        .rankings-bottom img {
+            object-fit: contain;
+        }
+        .rankings-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+            font-weight: 600;
+            color: white;
+        }
+        .rankings-one {
+            background-color: orange;
+        }
+        .rankings-two {
+            background-color: gray;
+        }
+        .rankings-three{
+            background-color: brown ;
+        }
+        .rankings-other {
+            background-color:midnightblue;
+        }
+        .rankings .items {
+            width: 50%;
+            padding-left: 20px;
+        }
+        .rankings-bottom .items {
+            width: 30%;
+        }
+    </style>
+</head>
+<body>
+    <header></header>
+    <main>
+        <h1 class="title">和服を普段着として着る</h1>
+        <img src="https://otokokimono.itembox.design/item/images/osusume/gr192_hudan/gr192_main_550.jpg" alt="">
+
+        <h2 class="title">着物を着てみたい!!</h2>
+        <p>
+        着物に興味があるが、今まで着物を着るきっかけがなかった...。時代劇や小説、映画、テレビを見たことで着物について知りたくなった。パーティーや観光地などで着物を着ている人を見て格好いい！<br>
+        そう思われた方は是非普段着としての着物ライフを始めてみませんか!!<br>
+        とはいえ、いきなり洋服のように気軽に着れるわけでもないし...。何からそろえればいいか...。着物って敷居も高い…などいろんな不安があると思います。こちらのページではこれから着物ライフを始めようとする方に普段着として着る和服の選び方をご提案させて頂きます。
+        </p>
+        <div>
+            <h3 class="title">オススメの着物ランキング</h3>
+            <div class="container rankings">
+                <div class="items">
+                    <div class="rankings-icon rankings-one">1</div>
+                    <img src="https://otokokimono.itembox.design/product/025/000000002527/000000002527-01-m.jpg?t=20210407160915">
+                    <div>男着物 洗える着物 袷 ちりめん 色無地 仕立て上がり (6860)<br>
+                        <span>23,100円</span>
+                        <span>(税込)</span>
+                    </div>
+                </div>
+                <div class="items">
+                    <div class="rankings-icon rankings-two">2</div>
+                    <img src="https://otokokimono.itembox.design/product/018/000000001862/000000001862-01-m.jpg?t=20210407160915">
+                    <div>男着物 洗える着物 袷 無地 仕立て上がり(6235)<br>
+                        <span>25,080円</span>
+                        <span>(税込)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="container rankings-bottom">
+                <div class="items">
+                    <div class="rankings-icon rankings-three">3</div>
+                    <img src="https://otokokimono.itembox.design/product/025/000000002527/000000002527-01-m.jpg?t=20210407160915">
+                    <div>男着物 洗える着物 袷 ちりめん 色無地 仕立て上がり (6860)<br>
+                        <span>23,100円</span>
+                        <span>(税込)</span>
+                    </div>
+                </div>
+                <div class="items">
+                    <div class="rankings-icon rankings-other">4</div>
+                    <img src="https://otokokimono.itembox.design/product/018/000000001862/000000001862-01-m.jpg?t=20210407160915">
+                    <div>男着物 洗える着物 袷 無地 仕立て上がり(6235)<br>
+                        <span>25,080円</span>
+                        <span>(税込)</span>
+                    </div>
+                </div>
+                <div class="items">
+                    <div class="rankings-icon rankings-other">5</div>
+                    <img src="https://otokokimono.itembox.design/product/018/000000001862/000000001862-01-m.jpg?t=20210407160915">
+                    <div>男着物 洗える着物 袷 無地 仕立て上がり(6235)<br>
+                        <span>25,080円</span>
+                        <span>(税込)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
