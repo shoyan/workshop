@@ -16,11 +16,27 @@
             margin: 0;
             padding: 0;
             font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', Meiryo, メイリオ, Osaka, 'MS PGothic', arial, helvetica, sans-serif;
+            min-width: 350px;
         }
         header {
             height: 60px;
-            background-color: darkgrey;
+            display: flex;
         }
+        header .left {
+            display: none;
+        }
+        header .center{
+            flex-basis: 80%;
+            text-align: right;
+            margin-top: 20px;
+        }
+        header .center img{
+            width: 200px;
+        }
+        header .right{
+            flex-basis: 20%;
+        }
+ 
         main {
             height: 800px;
             margin: 0 auto;
@@ -90,10 +106,74 @@
         .rankings-bottom .items {
             width: 30%;
         }
+        #nav {
+            display: flex;
+            justify-content: flex-end;
+            margin: 0;
+            display: none;
+        }
+        #nav li {
+            margin-right: 30px;
+        }
+        #nav-sp {
+            display: flex;
+            justify-content: flex-end;
+        }
+        #nav-sp li {
+            list-style: none;
+        }
+        #nav-sp img {
+            width: 40px;
+        }
+
+        /* タブレット、PC版のスタイル */
+        @media screen and (min-width: 760px) {
+            #nav {
+                display: flex;
+                /* 収まりきれない場合は改行させる */
+                flex-wrap: wrap;
+            }
+            #nav-sp {
+                display: none;
+            }
+            header .left {
+                display: block;
+                flex-basis: 40%;
+            }
+            header .center{
+                flex-basis: 20%;
+            }
+            header .center img{
+                width: 300px;
+            }
+            header .right{
+                flex-basis: 40%;
+            }
+        }
+ 
+        }
     </style>
 </head>
 <body>
-    <header></header>
+    <header>
+        <div class="left">ゲスト様こんにちは</div>
+        <div class="center">
+            <img id="logo" src="https://otokokimono.itembox.design/item//shop_logo_1.jpg" alt="男着物の加藤商店" class="fs-p-logo__image">
+        </div>
+        <div class="right">
+            <ul id="nav-sp">
+                <li><img src="https://otokokimono.itembox.design/item/images/sp/temp/sp_mypage_btn.jpg" alt="マイページ"></li>
+                <li><img src="https://otokokimono.itembox.design/item/images/sp/temp/sp_cart_btn.jpg" alt="買い物カゴ"></li>
+            </ul>
+            <ul id="nav">
+                <li>ログイン</li>
+                <li>会員登録</li>
+                <li>マイページ</li>
+                <li>ご利用ガイド</li>
+                <li>買い物カゴ</li>
+            </ul>
+        </div>
+    </header>
     <main>
         <h1 class="title">和服を普段着として着る</h1>
         <img src="https://otokokimono.itembox.design/item/images/osusume/gr192_hudan/gr192_main_550.jpg" alt="">
