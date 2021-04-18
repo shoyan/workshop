@@ -23,9 +23,11 @@
             display: flex;
         }
         header .left {
+            /* sp版は表示しない */
             display: none;
         }
         header .center{
+            /* 横幅は80% */
             flex-basis: 80%;
             text-align: right;
             margin-top: 20px;
@@ -34,16 +36,16 @@
             width: 200px;
         }
         header .right{
+            /* メニュー右側のアイコンは20%の領域とする */
             flex-basis: 20%;
         }
- 
         main {
             height: 800px;
             margin: 0 auto;
             width: 80%;
         }
         h1,h2,h3,h4,h5 {
-            font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
+            font-family: "游明朝", "YuMincho", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
         }
         h1.title,
         h2.title {
@@ -134,9 +136,11 @@
                 flex-wrap: wrap;
             }
             #nav-sp {
+                /* SP版のメニューは非表示 */
                 display: none;
             }
             header .left {
+                /* PC版は左側のユーザー名の部分を表示させる */
                 display: block;
                 flex-basis: 40%;
             }
@@ -149,8 +153,6 @@
             header .right{
                 flex-basis: 40%;
             }
-        }
- 
         }
     </style>
 </head>
