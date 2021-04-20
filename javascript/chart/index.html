@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div>
+        <canvas id="myChart"></canvas>
+    </div>
+    <script>
+        // APIからデータを取得
+        fetch('https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=jpy&days=1')
+            .then(response => response.json())
+            .then(chartData => {
+                priceData = [];
+                const labels = []
+                chartData['prices'].forEach(data => {
+                    // 日付を作成
+                    const date = new Date(data[0]);
+                    labels.push(date.toLocaleDateString() + " " + date.toLocaleTimeString())
+                    // 料金データ
+                    priceData.push(data[1]);
+                });
+                const data = {
+                    labels,
+                    datasets: [{
+                        label: 'bitcoin',
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: priceData,
+                    }]
+                };
+                const config = {
+                    type: 'line',
+                    data,
+                    options: {}
+                };
+                var myChart = new Chart(
+                    document.getElementById('myChart'),
+                    config
+                );
+            })
+    </script>
+</body>
+
+</html>
