@@ -17,6 +17,17 @@
         $stmt->execute();
         $categories[$index]['tasks'] = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    foreach($categories as $index => $category) {
+        $task_count = 0;
+        $task_completed_count = 0;
+        foreach ($categories[$index]['tasks'] as $task) {
+            $task_count++;
+            if ($task['task_completed']) {
+                $task_completed_count++;
+            }
+        }
+        $categories[$index]['task_progress_ratio'] = floor(($task_completed_count / $task_count) * 100);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -32,6 +43,7 @@
     <ul>
         <li>プロジェクト名: <?php echo $project['project_name'] ?></li>
         <li>概要: <?php echo $project['project_description'] ?></li>
+
     </ul>
 
     <h2>カテゴリ</h2>
@@ -41,6 +53,9 @@
         <?php foreach($categories as $category): ?>
             <dt><a href="./category.php?category_id=<?php echo $category['category_id'] ?>"><?php echo $category['category_name'] ?></a>
                 (<a href="./create-task.php?category_id=<?php echo $category['category_id'] ?>">タスク登録</a>)
+                <label for="file">進捗状況:</label>
+                <progress id="file" max="100" value="<?php echo $category['task_progress_ratio']?>"><?php echo $category['task_progress_ratio']?>% </progress>
+                <?php echo $category['task_progress_ratio']?>%
             </dt>
             <?php foreach($category['tasks'] as $task): ?>
             <dd>
