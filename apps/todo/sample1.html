@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .input_field {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>サンプル1</p>
+        <button class="show_button">表示</button>
+        <div class="input_field">
+            <input type="text" name="">
+        </div>
+    </div>
+    <div>
+        <p>サンプル2</p>
+        <button class="show_button">表示</button>
+        <div class="input_field">
+            <input type="text" name="">
+        </div>
+    </div>
+    <div>
+        <p>サンプル3</p>
+        <button class="show_button">表示</button>
+        <div class="input_field">
+            <input type="text" name="">
+        </div>
+    </div>
+
+    <script>
+        // ボタンを全て取得
+        const buttons = document.querySelectorAll('.show_button');
+        // ボタン1つ1つにクリックイベントを付与
+        buttons.forEach(function(button) {
+            button.addEventListener('click', function(event) {
+                // 親要素を取得して、親要素内のinput_fieldを取得
+                const parentElement = event.target.parentElement;
+                parentElement.querySelector('.input_field').style.display = "block";
+            })
+        })
+    </script>
+</body>
+</html>
