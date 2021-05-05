@@ -55,9 +55,9 @@ $projects = get_all_projects();
         <ul>
             <?php foreach ($projects as $project) : ?>
                 <li>
-                    <input type="checkbox" name="deleted_project_id[]" value="<?php echo $project['project_id'] ?>">
-                    <a href="./project.php?project_id=<?php echo $project['project_id'] ?>"><?php echo $project['project_name'] ?></a>
-                    <a href="./index.php?project_id=<?php echo $project['project_id'] ?>&deleted=1">削除</a>
+                    <input type="checkbox" name="deleted_project_id[]" value="<?php echo h($project['project_id']) ?>">
+                    <a href="./project.php?project_id=<?php echo h($project['project_id']) ?>)"><?php echo h($project['project_name']) ?></a>
+                    <a href="./index.php?project_id=<?php echo h($project['project_id']) ?>&deleted=1">削除</a>
                 </li>
             <?php endforeach ?>
         </ul>
