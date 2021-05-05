@@ -1,5 +1,6 @@
 <?php
     require_once("./database.php");
+    require_once("./functions.php");
 
     $stmt = $dbh->prepare("SELECT * from categories WHERE category_id = ?;");
     $stmt->bindParam(1, $_GET['category_id'], PDO::PARAM_INT);
@@ -31,16 +32,16 @@
     <title>カテゴリ</title>
 </head>
 <body>
-    <form action="./category.php?category_id=<?php echo $category['category_id'] ?>" method="post">
+    <form action="./category.php?category_id=<?php echo h($category['category_id']) ?>" method="post">
         <input type="hidden" name="action" value="update">
-        <input type="text" name="category_name" value="<?php echo $category['category_name'] ?>">
-        <input type="text" name="category_description" value="<?php echo $category['category_description'] ?>">
+        <input type="text" name="category_name" value="<?php echo h($category['category_name']) ?>">
+        <input type="text" name="category_description" value="<?php echo h($category['category_description']) ?>">
         <button type="submit">更新</button>
     </form>
 
-    <form action="./category.php?category_id=<?php echo $category['category_id'] ?>" method="post">
+    <form action="./category.php?category_id=<?php echo h($category['category_id']) ?>" method="post">
         <input type="hidden" name="action" value="delete">
-        <input type="hidden" name="category_id" value="<?php echo $category['category_id'] ?>">
+        <input type="hidden" name="category_id" value="<?php echo h($category['category_id']) ?>">
         <button type="submit">削除する</button>
     </form>
 </body>

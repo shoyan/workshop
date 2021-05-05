@@ -1,5 +1,7 @@
 <?php
     require_once("./database.php");
+    require_once("./functions.php");
+
     $result = false;
     if (!empty($_POST)) {
       $stmt = $dbh->prepare("INSERT INTO categories(project_id, category_name, category_description) VALUES (?, ?, ?)");
@@ -22,9 +24,9 @@
     <h1>カテゴリ登録</h1>
     <?php if ($result): ?>
         <p>カテゴリ登録が完了しました。</p>
-        <p><a href="./project.php?project_id=<?php echo $_GET['project_id'] ?>">プロジェクトページ</a></p>
+        <p><a href="./project.php?project_id=<?php echo h($_GET['project_id']) ?>">プロジェクトページ</a></p>
     <?php else: ?>
-        <form action="./create-category.php?project_id=<?php echo $_GET['project_id'] ?>" method="post">
+        <form action="./create-category.php?project_id=<?php echo h($_GET['project_id']) ?>" method="post">
             <input type="text" name="category_name" placeholder="カテゴリ名">
             <input type="text" name="category_description" placeholder="カテゴリ概要">
             <button type="submit">登録</button>

@@ -1,5 +1,7 @@
 <?php
     require_once("./database.php");
+    require_once("./functions.php");
+
     $result = false;
 
     $stmt = $dbh->prepare("SELECT * from categories WHERE category_id = ?;");
@@ -30,14 +32,14 @@
 
     <?php if($result): ?>
       <p>データベースに登録しました。</p>
-      <p><a href="./project.php?project_id=<?php echo $category['project_id'] ?>">プロジェクトページ</a></p>
+      <p><a href="./project.php?project_id=<?php echo h($category['project_id']) ?>">プロジェクトページ</a></p>
     <?php else: ?>
 
     <div>
       <button type="button" class="btn btn-info" onclick="clickBtn1()">タスク行を追加する</button>
     </div>
 
-    <form action="./create-task.php?category_id=<?php echo $category['category_id'] ?>" method="post">
+    <form action="./create-task.php?category_id=<?php echo h($category['category_id']) ?>" method="post">
     <div id="container">
       <div class="template">
         <div class="form-inline">

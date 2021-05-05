@@ -1,5 +1,7 @@
 <?php
     require_once("./database.php");
+    require_once("./functions.php");
+
     $result = false;
     if (!empty($_POST)) {
       $stmt = $dbh->prepare("INSERT INTO projects(project_name, project_description) VALUES (?, ?)");

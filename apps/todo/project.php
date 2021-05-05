@@ -1,5 +1,6 @@
 <?php
     require_once("./database.php");
+    require_once("./functions.php");
 
     $stmt = $dbh->prepare("SELECT * from projects WHERE project_id = ?;");
     $stmt->bindParam(1, $_GET['project_id'], PDO::PARAM_INT);
@@ -50,32 +51,32 @@
     <a href="/">TOPページ</a>
     <h1>プロジェクト詳細</h1>
     <ul>
-        <li>プロジェクト名: <?php echo $project['project_name'] ?></li>
-        <li>概要: <?php echo $project['project_description'] ?></li>
-        <li>開始日: <?php echo $project['project_begin_date'] ?></li>
-        <li>終了日: <?php echo $project['project_end_date'] ?></li>
-        <li>残り日数: <?php echo $project['days_left'] ?></li>
+        <li>プロジェクト名: <?php echo h($project['project_name']) ?></li>
+        <li>概要: <?php echo h($project['project_description']) ?></li>
+        <li>開始日: <?php echo h($project['project_begin_date']) ?></li>
+        <li>終了日: <?php echo h($project['project_end_date']) ?></li>
+        <li>残り日数: <?php echo h($project['days_left']) ?></li>
         <li>
             <label for="file">消化日数:</label>
-            <progress id="file" max="100" value="<?php echo $project['days_left_ratio']?>"><?php echo $project['days_left_ratio']?>% </progress>
-            <?php echo $project['days_left_ratio']?>%
+            <progress id="file" max="100" value="<?php echo h($project['days_left_ratio'])?>"><?php echo h($project['days_left_ratio'])?>% </progress>
+            <?php echo h($project['days_left_ratio'])?>%
         </li>
     </ul>
 
     <h2>カテゴリ</h2>
-    <p><a href="./create-category.php?project_id=<?php echo $project['project_id'] ?>">カテゴリ登録</a></p>
+    <p><a href="./create-category.php?project_id=<?php echo h($project['project_id']) ?>">カテゴリ登録</a></p>
 
     <dl>
         <?php foreach($categories as $category): ?>
-            <dt><a href="./category.php?category_id=<?php echo $category['category_id'] ?>"><?php echo $category['category_name'] ?></a>
-                (<a href="./create-task.php?category_id=<?php echo $category['category_id'] ?>">タスク登録</a>)
+            <dt><a href="./category.php?category_id=<?php echo h($category['category_id']) ?>"><?php echo h($category['category_name']) ?></a>
+                (<a href="./create-task.php?category_id=<?php echo h($category['category_id']) ?>">タスク登録</a>)
                 <label for="file">進捗状況:</label>
-                <progress id="file" max="100" value="<?php echo $category['task_progress_ratio']?>"><?php echo $category['task_progress_ratio']?>% </progress>
-                <?php echo $category['task_progress_ratio']?>%
+                <progress id="file" max="100" value="<?php echo h($category['task_progress_ratio'])?>"><?php echo h($category['task_progress_ratio'])?>% </progress>
+                <?php echo h($category['task_progress_ratio'])?>%
             </dt>
             <?php foreach($category['tasks'] as $task): ?>
             <dd>
-                <?php echo $task['task_name'] ?>
+                <?php echo h($task['task_name']) ?>
             </dd>
             <?php endforeach ?>
         <?php endforeach ?>
