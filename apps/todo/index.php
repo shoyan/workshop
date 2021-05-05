@@ -50,11 +50,11 @@
         // 選択数を表示する要素を取得
         const projectSelectedElement = document.querySelector("#project_selected span");
         // checkboxの1つ1つにイベントを設定
-        document.querySelectorAll("input[name='deleted_project_id']").forEach(function(checkbox) {
+        document.querySelectorAll("input[name='deleted_project_id[]']").forEach(function(checkbox) {
             // checkboxのチェックを入れる or 外すと処理が実行される
             checkbox.addEventListener('change', function() {
                 // checkboxのチェックされている数を更新
-                projectSelectedElement.textContent = document.querySelectorAll("input[name='deleted_project_id']:checked").length
+                projectSelectedElement.textContent = document.querySelectorAll("input[name='deleted_project_id[]']:checked").length
             })
         })
     </script>
