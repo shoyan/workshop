@@ -19,7 +19,7 @@
     }
 
     // 削除ボタンを押された場合（単体削除）
-    if ($_GET['deleted']) {
+    if (!empty($_GET['deleted'])) {
         // プロジェクトに紐づくカテゴリを取得
         $categories = get_categories_by_project_id($_GET['project_id']);
         foreach($categories as $category) {
@@ -59,6 +59,10 @@
                 </li>
           <?php endforeach ?>
       </ul>
+      <div>
+          <input type="checkbox" name="all_selected" id="all_selected">
+          <label for="all_selected">まとめて選択</label>
+      </div>
     <p id="project_selected">selected: <span>0</span>
         <button type="submit">削除</button>
     </p>
@@ -73,6 +77,19 @@
                 // checkboxのチェックされている数を更新
                 projectSelectedElement.textContent = document.querySelectorAll("input[name='deleted_project_id[]']:checked").length
             })
+        })
+
+        const allSelected = document.querySelector('#all_selected');
+        allSelected.addEventListener('change', function(checkbox) {
+            document.querySelectorAll("input[name='deleted_project_id[]']").forEach(function(childCheckbox) {
+                if (checkbox.target.checked) {
+                    childCheckbox.checked = true;
+                } else {
+                    childCheckbox.checked = false;
+                }
+            })
+            // checkboxのチェックされている数を更新
+            projectSelectedElement.textContent = document.querySelectorAll("input[name='deleted_project_id[]']:checked").length
         })
     </script>
 </body>
