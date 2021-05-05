@@ -17,6 +17,21 @@
             delete_project_by_project_id($project_id);
         }
     }
+
+    // 削除ボタンを押された場合（単体削除）
+    if ($_GET['deleted']) {
+        // プロジェクトに紐づくカテゴリを取得
+        $categories = get_categories_by_project_id($_GET['project_id']);
+        foreach($categories as $category) {
+            // タスクを削除
+            delete_all_task_by_category_id($category['category_id']);
+            // カテゴリを削除
+            delete_category_by_category_id($category['category_id']);
+        }
+        // プロジェクトを削除
+        delete_project_by_project_id($_GET['project_id']);
+    }
+
     // プロジェクト一覧を取得する
     $projects = get_all_projects();
 ?>
@@ -39,7 +54,9 @@
           <?php foreach($projects as $project): ?>
               <li>
                   <input type="checkbox" name="deleted_project_id[]" value="<?php echo $project['project_id']?>">
-                  <a href="./project.php?project_id=<?php echo $project['project_id']?>"><?php echo $project['project_name']?></a></li>
+                  <a href="./project.php?project_id=<?php echo $project['project_id']?>"><?php echo $project['project_name']?></a>
+                  <a href="./index.php?project_id=<?php echo $project['project_id']?>&deleted=1">削除</a>
+                </li>
           <?php endforeach ?>
       </ul>
     <p id="project_selected">selected: <span>0</span>
