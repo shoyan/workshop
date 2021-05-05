@@ -79,9 +79,13 @@
             })
         })
 
+        // まとめて選択の要素を取得
         const allSelected = document.querySelector('#all_selected');
+        // まとめて選択の要素にチェックを入れたら処理を実行
         allSelected.addEventListener('change', function(checkbox) {
+            // プロジェクトごとのチェックボックス1つ1つに処理を実行していく
             document.querySelectorAll("input[name='deleted_project_id[]']").forEach(function(childCheckbox) {
+                // プロジェクトごとのチェックボックスをまとめて選択のチェックボックスと同じ状態にする
                 if (checkbox.target.checked) {
                     childCheckbox.checked = true;
                 } else {
