@@ -7,14 +7,25 @@
     $stmt->execute();
     $project = $stmt->fetch(PDO::FETCH_ASSOC);
 
+    // 残り日数を計算する
     $day1 = strtotime(date("Y-m-d"));
     $day2 = strtotime($project['project_end_date']);
-    $project['days_left'] = ($day2 - $day1) / (60 * 60 * 24);
+    if ($day1 && $day2) {
+        $project['days_left'] = ($day2 - $day1) / (60 * 60 * 24);
+    } else {
+        $project['days_left'] = 0;
+    }
 
-    $day1 = strtotime($project['project_begin_date']);
-    $day2 = strtotime($project['project_end_date']);
-    $project['origin_days_left'] = ($day2 - $day1) / (60 * 60 * 24);
-    $project['days_left_ratio'] = 100 - floor($project['days_left'] / $project['origin_days_left'] * 100);
+    // 進捗を計算する
+    if ($project['project_begin_date'] &&  $project['project_end_date']) {
+        $day1 = strtotime($project['project_begin_date']);
+        $day2 = strtotime($project['project_end_date']);
+        $project['origin_days_left'] = ($day2 - $day1) / (60 * 60 * 24);
+        $project['days_left_ratio'] = 100 - floor($project['days_left'] / $project['origin_days_left'] * 100);
+    } else {
+        $project['origin_days_left'] = 0;
+        $project['days_left_ratio'] = 0;
+    }
 
     $stmt = $dbh->prepare("SELECT * from categories WHERE project_id = ?;");
     $stmt->bindParam(1, $_GET['project_id'], PDO::PARAM_INT);
