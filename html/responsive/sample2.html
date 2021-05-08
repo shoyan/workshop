@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, viewport-fit=cover">
+    <title>Document</title>
+    <style>
+        .p-breadcrumbs-wrapper {
+            text-align: center;
+            background-color: rosybrown;
+        }
+
+        /*　画面サイズが480pxからはここを読み込む　*/
+        @media screen and (min-width:480px) {
+            .p-breadcrumbs-wrapper {
+                background-color: red;
+            }
+        }
+
+        /*　画面サイズが768pxから1024pxまではここを読み込む　*/
+        @media screen and (min-width:768px) and (max-width:1024px) {
+            .p-breadcrumbs-wrapper {
+                background-color: purple;
+            }
+        }
+
+        /*　画面サイズが1024pxからはここを読み込む　*/
+        @media screen and (min-width:1024px) {
+            .p-breadcrumbs-wrapper {
+                background-color: blue;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <p class="p-breadcrumbs-wrapper">こんにちは</p>
+</body>
+
+</html>
