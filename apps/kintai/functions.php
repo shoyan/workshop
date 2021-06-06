@@ -27,9 +27,13 @@ function createAttendanceRecord($recordType, $recordTime) {
  * 勤怠レコードを全件数取得する
  * @return array 勤怠レコード
  */
-function getAllAttendanceRecord() {
+function getAllAttendanceRecord($target_date) {
     global $dbh;
-    $stmt = $dbh->prepare("SELECT * FROM attendance_records");
+    $stmt = $dbh->prepare("SELECT * FROM attendance_records WHERE record_time BETWEEN ? AND ?");
+    $start = $target_date . "-01 00:00:00";
+    $end   = $target_date . "-31 23:59:59";
+    $stmt->bindParam(1, $start);
+    $stmt->bindParam(2, $end);
     $stmt->execute();
     return $stmt->fetchAll();
 }

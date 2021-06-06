@@ -19,15 +19,22 @@ if (isset($_REQUEST['leaveWork'])) {
 // 勤怠データを登録する変数を定義
 $attendance_records = [];
 
+// 対象年月の取得
+if (isset($_REQUEST['date'])) {
+    $current_date = $_REQUEST['date'];
+} else {
+    $current_date = date('Y-m');
+}
+
 // 勤怠データを取得
-$all_record = getAllAttendanceRecord();
+$all_record = getAllAttendanceRecord($current_date);
 
 // その月の日付を作成
 // 月の日数を取得
-$day_count = date('t', strtotime($all_record[0]['record_time']));
+$day_count = date('t', strtotime($current_date));
 // 1日〜月末のデータを作成する
 for($i = 1; $i <= $day_count; $i++) {
-    $key = date("Y-m" , strtotime($all_record[0]['record_time'])) . "-" . str_pad($i, 2, '0', STR_PAD_LEFT);
+    $key = $current_date . "-" . str_pad($i, 2, '0', STR_PAD_LEFT);
     $attendance_records[$key] = [
         'Commuting' => '',
         'LeaveWork' => '',
@@ -56,6 +63,10 @@ foreach($all_record as $record) {
 <body>
 <div id ="content">
   <h1>勤怠管理</h1>
+  <ul>
+      <li><a href="./index.php?date=2021-05">2021年5月</a></li>
+      <li><a href="./index.php?date=2021-06">2021年6月</a></li>
+  </ul>
   <form action="" method="post">
     <button type="submit" name="commuting">出勤</button>
     <button type="submit" name="leaveWork">退勤</button>
