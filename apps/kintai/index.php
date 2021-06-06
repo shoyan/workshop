@@ -2,19 +2,48 @@
 // アプリの初期処理
 require_once('init.php');
 
+// 出勤時間の登録
 if (isset($_REQUEST['commuting'])) {
     $record_type= 'Commuting';
     $record_time = date("Y-m-d H:i:s");
     createAttendanceRecord($record_type, $record_time);
 }
 
+// 退勤時間の登録
 if (isset($_REQUEST['leaveWork'])) {
     $record_type = 'LeaveWork';
     $record_time = date("Y-m-d H:i:s");
     createAttendanceRecord($record_type, $record_time);
 }
 
-$attendance_records = getAllAttendanceRecord();
+// 勤怠データを登録する変数を定義
+$attendance_records = [];
+
+// 勤怠データを取得
+$all_record = getAllAttendanceRecord();
+
+// その月の日付を作成
+// 月の日数を取得
+$day_count = date('t', strtotime($all_record[0]['record_time']));
+// 1日〜月末のデータを作成する
+for($i = 1; $i <= $day_count; $i++) {
+    $key = date("Y-m" , strtotime($all_record[0]['record_time'])) . "-" . str_pad($i, 2, '0', STR_PAD_LEFT);
+    $attendance_records[$key] = [
+        'Commuting' => '',
+        'LeaveWork' => '',
+    ];
+}
+
+// 最も新しい出勤、退勤時間で表示データを作成する
+foreach($all_record as $record) {
+    $key = date("Y-m-d" , strtotime($record['record_time']));
+    if ($record['record_type'] === 'Commuting') {
+        $attendance_records[$key]['Commuting'] = date("H:i:s" , strtotime($record['record_time']));
+    }
+    if ($record['record_type'] === 'LeaveWork') {
+        $attendance_records[$key]['LeaveWork'] = date("H:i:s" , strtotime($record['record_time']));
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -36,15 +65,17 @@ $attendance_records = getAllAttendanceRecord();
   <table border="1">
     <thead>
         <tr>
-            <th>時間</th>
-            <th>区分</th>
+            <th>日付</th>
+            <th>出勤時間</th>
+            <th>退勤時間</th>
         </tr>
     </thead>
     <tbody>
-        <?php foreach($attendance_records as $record): ?>
+        <?php foreach($attendance_records as $date => $record): ?>
           <tr>
-            <td><?php echo $record['record_time']?></td>
-            <td><?php echo getRecordType($record['record_type']) ?></td>
+            <td><?php echo $date ?></td>
+            <td><?php echo $record['Commuting'] ?></td>
+            <td><?php echo $record['LeaveWork'] ?></td>
           </tr>
         <?php endforeach ?>
     </tbody>
