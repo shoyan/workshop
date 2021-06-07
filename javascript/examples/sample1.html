@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Sample1</h1>
+    <script>
+        function countPrice(data) {
+            const result = {
+                "0": 0,
+                "1000": 0,
+                "2000": 0,
+                "3000": 0,
+                "4000": 0,
+                "5000": 0,
+            };
+            data.forEach(function(d) {
+                if (d['price'] >= 0 &&  d['price'] < 1000) {
+                    result['0']++
+                } else if(d['price'] >= 1000 &&  d['price'] < 2000) {
+                    result['1000']++
+                } else if(d['price'] >= 2000 &&  d['price'] < 3000) {
+                    result['2000']++
+                } else if(d['price'] >= 3000 &&  d['price'] < 4000) {
+                    result['3000']++
+                } else if(d['price'] >= 4000 &&  d['price'] < 5000) {
+                    result['4000']++
+                } else if(d['price'] >= 5000) {
+                    result['5000']++
+                }
+            })
+            return result;
+        }
+
+        // 集計対象のデータ
+        const data = [
+            {price: "0", date: "2020"},
+            {price: "5000", date: "2020"},
+            {price: "5500", date: "2020"},
+            {price: "1000", date: "2021"},
+            {price: "2000", date: "2021"},
+            {price: "4200", date: "2021"},
+        ];
+
+        // データから年の重複を削除した形にする
+        let dates = new Set()
+        data.forEach(function(_data) {
+            dates.add(_data['date']);
+        });
+
+        // 集計結果を格納する変数
+        const result = [];
+        dates.forEach(function(date) {
+            // 年ごとにデータをフィルタリングする
+            const list = data.filter(function(d) {
+                return d['date'] === date
+            });
+            const prices = countPrice(list);
+            result.push([date].concat(Object.values(prices)));
+        })
+        console.log(result)
+        // => ["2020", 1, 0, 0, 0, 0, 2]
+        // => ["2021", 0, 1, 1, 0, 1, 0]
+    </script>
+</body>
+</html>

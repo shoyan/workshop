@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="get">
+        <input type="text" name="text" id="text">
+        <button id="send" type="button">送信</button>
+        <button id="reset" type="button">リセット</button>
+    </form>
+
+    <div class="copy"></div>
+
+    <ul id="youbi">
+        <li>月曜日</li>
+        <li>火曜日</li>
+        <li>水曜日</li>
+        <li>木曜日</li>
+        <li>金曜日</li>
+        <li>土曜日</li>
+        <li>日曜日</li>
+    </ul>
+
+    <script>
+        const button = document.querySelector('#send');
+        console.log(button);
+        button.addEventListener('click', function(event) {
+            alert('clickしました！');
+        });
+
+        button.addEventListener('click', function(event) {
+            const input = document.querySelector('#text');
+            const copy = document.querySelector('.copy');
+            copy.textContent = input.value.trim() + "が入力されました。";
+
+            const list = document.querySelectorAll('#youbi li');
+            list.forEach(function(element) {
+                // element.style.display = 'none';
+                element.style.color = 'black';
+                if (element.textContent === input.value.trim()) {
+                    // element.style.display = 'list-item';
+                    element.style.color = 'red';
+                }
+            })
+        })
+
+        const reset = document.querySelector('#reset');
+        reset.addEventListener('click', function(event) {
+            const list = document.querySelectorAll('#youbi li');
+            list.forEach(function(element) {
+                element.style.display = 'list-item';
+                element.style.color = 'black';
+            })
+        })
+
+        // クリックしたところを赤くする
+        const list = document.querySelectorAll('#youbi li');
+        list.forEach(function(element) {
+            element.addEventListener('click', function(element) {
+                const input = document.querySelector('#text');
+                input.value = element.target.textContent;
+                element.target.style.color = 'red';
+            });
+        })
+    </script>
+</body>
+</html>
