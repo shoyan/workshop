@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html, body, h1, p, ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        #recipe-box>h1 {
+            font-size: 1.2rem;
+            padding: 10px 18px;
+            background-color: #ffa500;
+            color: #fff;
+        }
+
+        .container-main {
+            display: flex;
+        }
+
+        .container-main .image-box {
+            flex-basis: 30%;
+            margin: 20px;
+        }
+
+        .material-box {
+            flex-basis: 70%;
+            margin: 20px;
+        }
+
+        .material-box h1 {
+            font-size: 1rem;
+            margin: 0 0 10px 0;
+        }
+
+        .container {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .box-left {
+            flex-basis: 80%;
+            padding: 5px;
+        }
+
+        .box-right {
+            flex-basis: 20%;
+            padding: 5px;
+        }
+
+        #process-box {
+            margin: 10px;
+        }
+
+        #process-box ul li {
+            background-color: #F2F2F2;
+            list-style: none;
+            margin: 10px;
+            padding: 10px;
+        }
+        #process-box .order span {
+            display: inline-block;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="recipe-box">
+        <h1>きのこのスープ</h1>
+        <div class="container-main">
+            <div class="image-box">
+                <img src="./recipe-1.jpeg" alt="">
+            </div>
+            <div class="material-box">
+                <h1>材料 (4人分)</h1>
+                <div class="container">
+                    <div class="box-left">きのこ（エリンギ・しめじ・えのき）</div>
+                    <div class="box-right">200g</div>
+                </div>
+                <div class="container">
+                    <div class="box-left">ベーコン</div>
+                    <div class="box-right">100g</div>
+                </div>
+                <div class="container">
+                    <div class="box-left">牛乳</div>
+                    <div class="box-right">500ml</div>
+                </div>
+                <div class="container">
+                    <div class="box-left">ブイヨン</div>
+                    <div class="box-right">1袋</div>
+                </div>
+                <div class="container">
+                    <div class="box-left">塩麹</div>
+                    <div class="box-right">大1</div>
+                </div>
+                <div class="container">
+                    <div class="box-left">オリーブオイル</div>
+                    <div class="box-right">小1</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="process-box">
+        <p>【作り方】</p>
+        <ul class="order">
+            <li><span>1</span>エリンギ、しめじ、えのきは食べやすい大きさにカットし、塩糀を加え、全体にからむように混ぜ合わせる。そのまま３０分以上おいておく。</li>
+            <li><span>2</span>ベーコンは１ｃｍの厚さに切り、オリーブ油を入れた鍋でベーコンを炒める。火が通ったらきのこ類も全部加えて炒める。</li>
+            <li><span>3</span>牛乳を入れ、ブイヨンを入れる。沸騰しない程度に温める。</li>
+        </ul>
+    </div>
+</body>
+
+</html>
