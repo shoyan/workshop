@@ -1,9 +1,34 @@
 <?php
+/**
+ * 画像かどうかをチェックする
+ */
+function is_image_file($file_path) {
+  // 定数については以下のURLを参照してください。
+  // https://www.php.net/manual/ja/function.exif-imagetype.php
+  $allow_image_type = [IMAGETYPE_GIF, IMAGETYPE_JPEG, IMAGETYPE_PNG];
+
+  //画像ファイルかのチェック
+  $result = exif_imagetype($file_path); 
+  if (in_array($result, $allow_image_type)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 $uploaded = false;
 if (!empty($_FILES['uploaded_file'])) { 
   $upload_dir = './upload_dir/';
   $uploaded_file = $upload_dir . basename($_FILES['uploaded_file']['name']);
-  move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $uploaded_file);
+
+  //画像ファイルかのチェック
+  if (is_image_file($_FILES['uploaded_file']['tmp_name'])) {
+    move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $uploaded_file);
+    $message = '画像をアップロードしました';
+  } else {
+    $message = '画像ファイルではありません';
+  }
+
   $uploaded = true;
 }
 
@@ -22,7 +47,7 @@ $images = glob('./upload_dir/*');
 
 <body>
   <?php if ($uploaded): ?>
-  <p><?php echo "ファイルのアップロードが完了しました。"; ?></p>
+    <p><?php echo $message; ?></p>
   <?php endif ?>
 
   <form enctype="multipart/form-data" action="index.php" method="POST">
