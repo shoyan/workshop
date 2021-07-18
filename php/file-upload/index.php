@@ -7,6 +7,10 @@ function is_image_file($file_path) {
   // https://www.php.net/manual/ja/function.exif-imagetype.php
   $allow_image_type = [IMAGETYPE_GIF, IMAGETYPE_JPEG, IMAGETYPE_PNG];
 
+  if (empty($file_path)) {
+    return false;
+  }
+
   //画像ファイルかのチェック
   $result = exif_imagetype($file_path); 
   if (in_array($result, $allow_image_type)) {
@@ -43,6 +47,24 @@ $images = glob('./upload_dir/*');
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PHPでファイルアップロード</title>
+  <style>
+    #image-upload-form {
+      display: inline-block;
+      border: 1px solid gray;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    #image-upload-form .upload-btn {
+      display: block;
+      margin-top: 20px;
+      background-color: #4169e1;
+      color: white;
+      border: 0;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+  </style>
 </head>
 
 <body>
@@ -50,15 +72,17 @@ $images = glob('./upload_dir/*');
     <p><?php echo $message; ?></p>
   <?php endif ?>
 
-  <form enctype="multipart/form-data" action="index.php" method="POST">
+  <form id="image-upload-form" enctype="multipart/form-data" action="index.php" method="POST">
     <input type="hidden" name="name" value="value" />
     アップロード: <input name="uploaded_file" type="file" />
-    <input type="submit" value="ファイル送信" />
+    <input class="upload-btn" type="submit" value="ファイルをアップロード" />
   </form>
 
-  <?php foreach($images as $image): ?>
-    <img src="<?php echo $image; ?> " alt="" srcset="" width="200">
-  <?php endforeach ?>
+  <div>
+    <?php foreach($images as $image): ?>
+      <img src="<?php echo $image; ?> " alt="" srcset="" width="200">
+    <?php endforeach ?>
+  </div>
 </body>
 
 </html>
