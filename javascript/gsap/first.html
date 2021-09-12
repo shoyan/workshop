@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+    <style>
+        .circle {
+            width: 50px;
+            height: 50px;
+            background-color: blue;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 20px;
+        }
+        .circle:nth-of-type(2) {
+            background-color: red;
+        }
+        .circle:nth-of-type(3) {
+            background-color: gold;
+        }
+        .circle:nth-of-type(4) {
+            background-color: green;
+        }
+        .circle:nth-of-type(5) {
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+   <img class="logo" src="logo.svg" alt="" width="300"> 
+   <div class="circle"></div>
+   <div class="circle"></div>
+   <div class="circle"></div>
+   <div class="circle"></div>
+   <div class="circle"></div>
+
+   <script>
+       gsap.from(".logo", {
+           duration: 1.5,
+           opacity: 0,
+           scale: 0.3,
+           ease: "back"
+       });
+       gsap.from(".circle", {
+            duration: 1,
+            opacity: 0,
+            y: "random(-200, 200)",
+            stagger: 0.25
+       })
+    //    var myObject = {rotation: 0};
+    //    gsap.to(myObject, {duration: 20, rotation: 360, onUpdate: function() {
+    //        console.log(myObject.rotation)
+    //    }})
+   </script>
+</body>
+</html>
