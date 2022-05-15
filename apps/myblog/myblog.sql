@@ -27,8 +27,8 @@ CREATE TABLE `comments` (
 
 CREATE TABLE `posts` (
   `id` int(11) NOT NULL,
-  `blog_title` varchar(100) NOT NULL,
-  `blog_content` varchar(5000) NOT NULL,
+  `post_title` varchar(100) NOT NULL,
+  `post_content` varchar(5000) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
