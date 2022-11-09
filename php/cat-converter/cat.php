@@ -1,3 +1,11 @@
+<?php
+// メッセージが空の場合は入力を促すメッセージをセットする
+if (empty($_GET['message'])) {
+    $message = '何か入力してニャ！';
+} else {
+    $message = $_GET['message'] . 'ニャー！';
+}
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -21,7 +29,7 @@
         <button>実行</button>
     </form>
 
-    <p id="output"><?php echo $_GET['message'] . 'ニャー！'?></p>
+    <p id="output"><?php echo $message ?></p>
 
 </body>
 </html>
