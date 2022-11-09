@@ -1,8 +1,10 @@
 <?php
 // メッセージが空の場合は入力を促すメッセージをセットする
 if (empty($_GET['message'])) {
+    $org_message = '';
     $message = '何か入力してニャ！';
 } else {
+    $org_message = $_GET['message'];
     $message = $_GET['message'] . 'ニャー！';
 }
 ?>
@@ -25,7 +27,7 @@ if (empty($_GET['message'])) {
     <p>入力した文字を猫語に変換します。</p>
 
     <form action="./cat.php" method="get">
-        <input type="text" name="message" value="<?php echo $_GET['message'] ?>">
+        <input type="text" name="message" value="<?php echo $org_message ?>">
         <button>実行</button>
     </form>
 
