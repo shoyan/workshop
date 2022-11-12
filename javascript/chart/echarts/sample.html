@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!-- including ECharts file -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.1.2/dist/echarts.min.js"></script>
+</head>
+<body>
+    <div id="main" style="width:1200px; height:400px;"></div> 
+    <script type="text/javascript">
+        // based on prepared DOM, initialize echarts instance
+        var myChart = echarts.init(document.getElementById('main'));
+        var option;
+
+        var xAxisData = [];
+        var data1 = [];
+        var data2 = [];
+        var data3 = [];
+        var data4 = [];
+
+        for (var i = 1; i <= 12; i++) {
+            xAxisData.push(i + '月');
+            data1.push((Math.random() * 2).toFixed(2));
+            data2.push((Math.random() * 5).toFixed(2));
+            data3.push((Math.random() + 0.3).toFixed(2));
+            data4.push(Math.random().toFixed(2));
+        }
+        var emphasisStyle = {
+            itemStyle: {
+                shadowBlur: 10,
+                shadowColor: 'rgba(0,0,0,0.3)'
+            }
+        };
+
+        option = {
+            legend: {
+                data: ['確定申告', '年末調整', '法人決算', '監査', '減価償却', '消費税'],
+                left: '10%'
+            },
+            xAxis: {
+                data: xAxisData,
+                axisLine: {onZero: true},
+                splitLine: {show: false},
+                splitArea: {show: false}
+            },
+            yAxis: {},
+            tooltip: {},
+            grid: {
+                bottom: 100
+            },
+            series: [
+                {
+                    name: '確定申告',
+                    type: 'bar',
+                    stack: 'total',
+                    emphasis: emphasisStyle,
+                    data: data1
+                },
+                {
+                    name: '年末調整',
+                    type: 'bar',
+                    stack: 'total',
+                    emphasis: emphasisStyle,
+                    data: data2
+                },
+                {
+                    name: '法人決算',
+                    type: 'bar',
+                    stack: 'total',
+                    emphasis: emphasisStyle,
+                    data: data3
+                },
+                {
+                    name: '監査',
+                    type: 'bar',
+                    stack: 'total',
+                    emphasis: emphasisStyle,
+                    data: data4
+                },
+                {
+                    name: '減価償却',
+                    type: 'bar',
+                    stack: 'total',
+                    emphasis: emphasisStyle,
+                    data: data4
+                },
+                {
+                    name: '消費税',
+                    type: 'bar',
+                    stack: 'total',
+                    emphasis: emphasisStyle,
+                    data: data4
+                }
+ 
+            ]
+        };
+        
+        option && myChart.setOption(option);
+    </script>
+</body>
+</html>

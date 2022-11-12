@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+.resizable {
+  resize: both;
+  overflow: scroll;
+  border: 1px solid black;
+}
+
+div {
+  height: 300px;
+  width: 300px;
+}
+
+p {
+  height: 200px;
+  width: 200px;
+}
+    </style>
+</head>
+<body>
+    <div class="resizable">
+        <p class="resizable">
+          This paragraph is resizable in all directions, because
+          the CSS `resize` property is set to `both` on this element.
+       </p>
+    </div> 
+</body>
+</html>

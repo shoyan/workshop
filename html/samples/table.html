@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .row {
+            display: flex;
+        }
+
+        .small {
+            font-size: 10px;
+        }
+
+        .col-lg-6 {
+            width: 50%;
+        }
+        table {
+            height: 200px;
+            border-collapse: collapse;
+        }
+
+        table,
+        td,
+        tr,
+        th {
+            border: 1px solid #777;
+            text-align: center;
+        }
+        .w-100 {
+            width: 100%;
+        }
+        #consultation-hours {
+            height: 150px;
+            width: 80%;
+        }
+        #calendar {
+            height: 150px;
+            width: 60%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-lg-6">
+            <table id="consultation-hours" class="table table-bordered text-center w-100">
+                <tbody>
+                        <tr>
+                            <th>曜日</th>
+                            <th scope="col">月</th>
+                            <th scope="col">火</th>
+                            <th scope="col">水</th>
+                            <th scope="col">木</th>
+                            <th scope="col">金</th>
+                            <th scope="col">土</th>
+                            <th scope="col">日</th>
+                        </tr>
+                        <tr>
+                            <th scope="row">9:30~12:30</th>
+                            <td class="text-center">○</td>
+                            <td class="text-center">○</td>
+                            <td class="text-center">○</td>
+                            <td class="text-center">/</td>
+                            <td class="text-center">○</td>
+                            <td class="text-center">⚫︎</td>
+                            <td class="text-center">/</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">14:00~18:00</th>
+                            <td class="text-center">○</td>
+                            <td class="text-center">○</td>
+                            <td class="text-center">★</td>
+                            <td class="text-center">/</td>
+                            <td class="text-center">○</td>
+                            <td class="text-center">●</td>
+                            <td class="text-center">/</td>
+                        </tr>
+                </tbody>
+            </table>
+            <p>※当院はご予約制です</p>
+            <div>
+                <div class="mb-4">
+                    <h3 class="h6">診療時間</h3>
+                    <p>"●⼟曜 10:00-13:00／14:30-17:30" <br> "★⽔曜午後は⼿術のみです。" </p>
+                </div>
+                <div class="mb-4">
+                    <h3 class="h6">[休診] 木曜／日・祝祭日</h3> <span class="small">※ 祝祭日のある週の木曜日は午前午後ともに診療します。 <br> </span> <span
+                        class="small">※ 夏季休暇や年末年始につきましてはお知らせにてご案内いたします。</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <table id="calendar" class="table table-bordered mb-3 ">
+                <tbody>
+                        <tr>
+                            <td colspan="2" class="border-right-0">≪ 前月</td>
+                            <th colspan="3" class="border border-0 text-center">20××年××月</th>
+                            <td colspan="2" class="border border-left-0 text-right">翌月 ≫</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>6</td>
+                            <td>7</td>
+                            <td>8</td>
+                            <td>9</td>
+                            <td>10</td>
+                            <td>11</td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td>13</td>
+                            <td class="bd-danger text-white">14</td>
+                            <td>15</td>
+                            <td>16</td>
+                            <td>17</td>
+                            <td>18</td>
+                        </tr>
+                        <tr>
+                            <td>19</td>
+                            <td>20</td>
+                            <td>21</td>
+                            <td>22</td>
+                            <td>23</td>
+                            <td>24</td>
+                            <td>25</td>
+                        </tr>
+                        <tr>
+                            <td>26</td>
+                            <td>27</td>
+                            <td>28</td>
+                            <td>29</td>
+                            <td>30</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                </tbody>
+            </table>
+</body>
+
+</html>

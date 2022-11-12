@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p {
+            border: 1px solid gray;
+            /* 文字を真ん中にしたい場合 */
+            text-align: center;
+        }
+        .box {
+            border: 1px solid gray;
+            width: 200px;
+            text-align: center;
+            background-color: cornflowerblue;
+            margin: 0 auto;
+        }
+
+        .parent {
+            border: 1px solid gray;
+            height: 200px;
+            margin-top: 100px;
+            /* 垂直方向の真ん中にしたい場合 */
+            display: flex;
+            align-items: center;
+        }
+        .child {
+            border: 1px solid gray;
+            width: 200px;
+            height: 20px;
+            text-align: center;
+            background-color: cornflowerblue;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <p>これはテキストです。</p>
+    <div class="box">Box</div>
+    <div class="parent">
+        <div class="child">child</div>
+    </div>
+</body>
+</html>

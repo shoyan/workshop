@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .btn {
+            display: inline-block;
+            background-color: gray;
+        }
+        .active {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">タイトル</h1>
+    <ul id="menu">
+        <li>item1</li>
+        <li>item2</li>
+        <li>item3</li>
+    </ul>
+    <ul id="menu1">
+        <li>item4</li>
+        <li>item5</li>
+        <li>item6</li>
+    </ul>
+    <a href="b.html">リンク</a>
+    <a class="btn active">ボタン</a>
+    <script>
+        const li = document.querySelector('#menu1 li:nth-of-type(2)');
+        console.log(li.textContent);
+
+        const ul = document.querySelector('#menu');
+        console.log(ul);
+
+        const liChild = document.createElement('li');
+        liChild.textContent = '追加したitem';
+        ul.appendChild(liChild);
+
+        const a = document.querySelector('a');
+        a.setAttribute('href', 'c.html');
+        const url = a.getAttribute('href');
+        a.setAttribute('target', '_blank');
+
+        a.removeAttribute('href');
+        console.log(url);
+
+        const h = document.querySelector('h1');
+        h.classList.add('title2', 'title3');
+
+        const btn = document.querySelector('.btn');
+        btn.addEventListener('click', (elem) => {
+            elem.target.classList.toggle('active')
+        })
+    </script>
+</body>
+</html>

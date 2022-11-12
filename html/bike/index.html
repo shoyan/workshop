@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+    
+    <!-- head内にwebページ情報やCSSのリンクを記述 -->
+    <head>
+        <meta charset="UTF-8">
+        <title>Profile</title>
+        <meta name="discription" contents="ロードバイクが趣味の私が自転車を紹介します">
+        <!-- ファビコン用画像読み込み -->
+        <link rel="icon" type="image/png" href="img/favicon.ico">
+        <!-- "viewport設定"様々なディバイスの表示領域に合わせる -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    <!-- CSSファイル読み込み -->
+        <!-- ress.comで各ブラウザのデフォルトCSSをリセット -->
+        <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+        <!-- Googlefontsで"Philosopher"フォントを読み込み -->
+        <link href="https://fonts.googleapis.com/css?family=Philosopher" rel="stylesheet">
+
+
+        <!-- メインCSSの読み込み -->
+        <link href="./style.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <header id="header">
+            <h1>
+                <a href="index.html"><img class="logo" src="img/logo.svg" alt="Profile">
+                </a>
+            </h1>
+            <nav>
+                <ul class="main-nav">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="bicycle.html">Bicycle</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <div class="main-visual">
+                <img src="img/mainvisual.jpg" alt="メインビシュアル">
+            </div>
+
+            <section>
+                <h2>About</h2>
+                    <div>
+                        <img class="aout-img" src="img/about.jpg" alt="About">
+                        <h3>KAKERU MIYAUCHI</h3>
+                        <p>テキストテキストテキスト</p>
+                    </div>
+            </section>
+
+            <section>
+                <h2>Bicycle</h2>
+                <ul>
+                    <img src="img/bicycle1.jpg" alt="">
+                    <h3>タイトルタイトル</h3>
+                    <p>テキストテキストテキスト</p>
+
+                    <img src="img/bicycle2.jpg" alt="">
+                    <h3>タイトルタイトル</h3>
+                    <p>テキストテキストテキスト</p>
+
+                    <img src="img/bicycle3.jpg" alt="">
+                    <h3>タイトルタイトル</h3>
+                    <p>テキストテキストテキスト</p>
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            <div class="wrapper">
+                <!-- コピーライト記載"small" -->
+                <p><small>&copy; 2020 Profile</small></p>
+            </div>
+        </footer>

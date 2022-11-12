@@ -1,0 +1,29 @@
+/* コードの文字化けを防ぐ */
+@charset "UTF-8";
+
+/* ユーザー設定の文字サイズを正しく反映 */
+html {
+    font-size: 100%;
+}
+
+body {
+    font-family: "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", sans-serif;
+    line-height: 1.7;
+    color: #432;
+}
+a {
+    text-decoration: none;
+}
+img {
+    max-width: 100%;
+    
+}
+
+/* heaer */
+.logo {
+    width: 210px;
+    margin-top: 14px;
+}
+.main-nav {
+    display: flex;
+}

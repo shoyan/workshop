@@ -1,7 +1,7 @@
 #content a {
    text-decoration: none;
 }
-#content a:link{
+/* #content a:link{
   color: #000000;
 }
 #content a:visited{
@@ -12,4 +12,4 @@
 }
 #content a:active{
   color: #000000;
-}
+} */

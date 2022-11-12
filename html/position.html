@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 500px;
+            vertical-align: bottom;
+        }
+        .message {
+            background: rgba(255, 255, 0, 0.5);
+            color: white;
+            width: 200px;
+            height: 80px;
+            padding: 20px;
+            position: absolute;
+            bottom: -10px;
+            left: -10px;
+            text-align: left;
+        }
+        .img-box {
+            border: 3px solid red;
+            text-align: right;
+            display: flex;
+            flex-direction: row-reverse;
+
+        }
+        .inner-box {
+            position: relative;
+            /* display: inline-block; */
+            border: 3px solid blue;
+        }
+
+        h1 {
+            -ms-writing-mode: tb-rl;
+            writing-mode: vertical-rl;
+            position: relative;
+            top: -100px;
+        }
+        #title {
+            border-bottom: 1px solid red;
+            width: max-content;
+        }
+    </style>
+</head>
+<body>
+    <p id="title">ここに文字が入ります</p>
+    <div class="img-box">
+      <h1>新しい価値の想像</h1>
+      <div class="inner-box">
+          <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" alt="">
+          <div class="message">テキストが入ります</div>
+      </div>
+    </div>
+</body>
+</html>
