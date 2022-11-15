@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .anim-box {
+      background: linear-gradient(to right, #362ae0 0%,#3b79cc 50%,#42d3ed 100%);
+      border-radius: 5px;
+      max-width: 400px;
+      height: 250px;
+      margin: 20px 0;
+    }
+    /* フェードインのアニメーション */
+    .anim-box.fadein.is-animated {
+      animation: fadeIn 0.7s ease 0ms;
+    }
+
+    /* スライドインのアニメーション */
+    .anim-box.slidein.is-animated {
+      animation: slideIn 0.7s ease 0ms;
+    }
+
+    /* ズームインのアニメーション */
+    .anim-box.zoomin.is-animated {
+      animation: zoomIn 0.7s ease 0ms;
+    }
+ 
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideIn {
+      0% {
+        transform: translateX(180px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+      }
+      40%,100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes zoomIn {
+      0% {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    </style>
+</head>
+<body>
+    <div>フェードイン</div>
+    <div class="anim-box fadein is-animated"></div>
+    <div>スライドイン</div>
+    <div class="anim-box slidein is-animated"></div>
+    <div>ズームイン</div>
+    <div class="anim-box zoomin is-animated"></div>
+</body>
+</html>
