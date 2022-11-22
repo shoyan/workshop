@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .anim-box {
+            background: linear-gradient(to right, #362ae0 0%, #3b79cc 50%, #42d3ed 100%);
+            border-radius: 5px;
+            max-width: 400px;
+            height: 250px;
+            /* デフォルトは非表示 */
+            opacity: 0;
+        }
+
+        .anim-box.fadein.is-animated {
+            animation: fadeIn 0.7s cubic-bezier(0.33, 1, 0.68, 1) 1 forwards;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .anim-box.slidein.is-animated {
+            animation: slideIn 1s cubic-bezier(0.25, 1, 0.5, 1) 1 forwards;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateX(180px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+
+            40%,
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .anim-box.zoomin.is-animated {
+            animation: zoomIn 0.8s cubic-bezier(0.25, 1, 0.5, 1) 1 forwards;
+        }
+
+        @keyframes zoomIn {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .anim-box.poyoyon.is-animated {
+            animation: poyoyon 0.5s cubic-bezier(0.12, 0, 0.39, 0) 1 forwards;
+        }
+
+        @keyframes poyoyon {
+            0% {
+                transform: translateX(140px);
+                opacity: 0;
+            }
+
+            50% {
+                transform: translateX(0);
+            }
+
+            65% {
+                transform: translateX(30px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+
+            20%,
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .anim-box.poyoyon2.is-animated {
+            animation: poyoyon2 1s ease-in-out 1 forwards;
+        }
+
+        @keyframes poyoyon2 {
+            0% {
+                transform: scale(1.0, 1.0) translate(0, 0);
+            }
+
+            15% {
+                transform: scale(0.98, 0.9) translate(0, 5px);
+            }
+
+            30% {
+                transform: scale(1.02, 1.0) translate(0, 8px);
+            }
+
+            50% {
+                transform: scale(0.98, 1.05) translate(0, -8px);
+            }
+
+            70% {
+                transform: scale(1.0, 0.9) translate(0, 5px);
+            }
+
+            100% {
+                transform: scale(1.0, 1.0) translate(0, 0);
+            }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .anim-box.poyoyon3.is-animated {
+            animation: poyoyon3 2.5s infinite;
+            opacity: 1;
+        }
+
+        @keyframes poyoyon3 {
+
+            0%,
+            40% {
+                transform: skew(0deg, 0deg);
+            }
+
+            5% {
+                transform: skew(5deg, 5deg);
+            }
+
+            10% {
+                transform: skew(-4deg, -4deg);
+            }
+
+            15% {
+                transform: skew(3deg, 3deg);
+            }
+
+            20% {
+                transform: skew(-2deg, -2deg);
+            }
+
+            25% {
+                transform: skew(1deg, 1deg);
+            }
+
+            30% {
+                transform: skew(-0.6deg, -0.6deg);
+            }
+
+            35% {
+                transform: skew(0.3deg, 0.3deg);
+            }
+        }
+
+        .anim-box.slide-skew.is-animated {
+            animation: slide-skew 0.4s cubic-bezier(0.25, 1, 0.5, 1) 1 forwards;
+        }
+
+        @keyframes slide-skew {
+            0% {
+                transform: translate(180px, 30px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translate(0, 0);
+            }
+
+            20%,
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .anim-box.popup.is-animated {
+            animation: popup 0.6s cubic-bezier(0.22, 1, 0.36, 1) 1 forwards;
+        }
+
+        @keyframes popup {
+            0% {
+                transform: translateY(40px) scale(0.8);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0) scale(1.0);
+            }
+
+            80%,
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .anim-box.poyopoyo {
+            animation: poyopoyo 2s ease-out infinite;
+            opacity: 1;
+        }
+
+        @keyframes poyopoyo {
+
+            0%,
+            40%,
+            60%,
+            80% {
+                transform: scale(1.0);
+            }
+
+            50%,
+            70% {
+                transform: scale(0.95);
+            }
+        }
+
+        .anim-box.kiran {
+            opacity: 1;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .anim-box.kiran::before {
+            background-color: #fff;
+            content: "";
+            display: block;
+            position: absolute;
+            top: -100px;
+            left: 0;
+            width: 30px;
+            height: 100%;
+            opacity: 0;
+            transition: cubic-bezier(0.32, 0, 0.67, 0);
+        }
+
+        .anim-box.kiran:hover::before {
+            animation: kiran 0.5s linear 1;
+        }
+
+        @keyframes kiran {
+            0% {
+                transform: scale(2) rotate(45deg);
+                opacity: 0;
+            }
+
+            20% {
+                transform: scale(20) rotate(45deg);
+                opacity: 0.6;
+            }
+
+            40% {
+                transform: scale(30) rotate(45deg);
+                opacity: 0.4;
+            }
+
+            80% {
+                transform: scale(45) rotate(45deg);
+                opacity: 0.2;
+            }
+
+            100% {
+                transform: scale(50) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        .bg .bg-wrap {
+            position: relative;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        .bg.is-animated .bg-wrap::before {
+            animation: bg 2.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            background: linear-gradient(to right, #362ae0 0%, #3b79cc 50%, #42d3ed 100%);
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform-origin: left center;
+        }
+
+        .bg .bg-wrap .inn {
+            color: #fff;
+            display: inline-block;
+            font-size: 36px;
+            font-weight: bold;
+            padding: 5px 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes bg {
+            0% {
+                opacity: 0;
+                transform: scaleX(0) translateX(-5%);
+            }
+
+            30% {
+                transform: scaleX(1) translateX(0);
+            }
+
+            100% {
+                transform: scaleX(1) translateX(0);
+            }
+
+            30%,
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .matrix .bg-wrap,
+        .matrix .bg-wrap .inn {
+            display: block;
+        }
+
+        .matrix .bg-wrap {
+            overflow: hidden;
+            opacity: 0;
+        }
+
+        .matrix .bg-wrap+.bg-wrap {
+            margin-top: 10px;
+        }
+
+        .matrix .bg-wrap .inn.large {
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        .matrix .bg-wrap .inn.small {
+            font-size: 15px;
+        }
+
+        .matrix .bg-wrap .inn {
+            opacity: 0;
+            transform: matrix(1, 0, 0, 1, 0, 100);
+            transition: 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .matrix.is-animated .bg-wrap {
+            opacity: 1;
+        }
+
+        .matrix.is-animated .bg-wrap .inn {
+            opacity: 1;
+            transform: matrix(1, 0, 0, 1, 0, 0);
+        }
+
+        .mask-bg {
+            color: transparent;
+            display: inline-block;
+            font-size: 36px;
+            font-weight: bold;
+            overflow: hidden;
+            position: relative;
+            transition: color 0ms 450ms;
+        }
+
+        .mask-bg::after {
+            background: linear-gradient(to right, #362ae0 0%, #3b79cc 50%, #42d3ed 100%);
+            bottom: 0;
+            content: '';
+            display: block;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transform: translate(0, 100%);
+        }
+
+        .mask-bg.is-animated {
+            color: #362ae0;
+        }
+
+        .mask-bg.is-animated::after {
+            animation: mask-bg 1.2s cubic-bezier(0.8, 0, 0.170, 1);
+        }
+
+        @keyframes mask-bg {
+            0% {
+                transform: translate(0, 101%)
+            }
+
+            40%,
+            60% {
+                transform: translate(0, 0%)
+            }
+
+            100% {
+                transform: translate(0, -100%)
+            }
+        }
+
+        .line {
+            display: block;
+            position: relative;
+        }
+
+        .line::after {
+            background: linear-gradient(to right, #362ae0 0%, #3b79cc 50%, #42d3ed 100%);
+            content: '';
+            display: block;
+            height: 1px;
+            width: 0;
+            transform: translateX(-50%);
+            transition: 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+        }
+
+        .line.is-animated::after {
+            width: 100%;
+        }
+
+        .anim-box.fadeup.is-animated {
+            animation: fadeup 1s cubic-bezier(0.33, 1, 0.68, 1) 1 forwards;
+        }
+
+        @keyframes fadeup {
+            0% {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            80% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stroke {
+            background: #f0f0f0;
+            max-width: 400px;
+            height: 250px;
+            position: relative;
+        }
+
+        .stroke .border {
+            content: "";
+            position: absolute;
+            opacity: 0;
+        }
+
+        .stroke .border.top,
+        .stroke .border.bottom {
+            width: calc(100% - 20px);
+        }
+
+        .stroke .border.top {
+            border-top: 3px solid #362ae0;
+            right: 0;
+            top: 0;
+        }
+
+        .stroke .border.bottom {
+            border-bottom: 3px solid #362ae0;
+            left: 0;
+            bottom: 0;
+        }
+
+        .stroke .border.right,
+        .stroke .border.left {
+            height: calc(100% - 20px);
+        }
+
+        .stroke .border.right {
+            border-right: 3px solid #362ae0;
+            right: 0;
+            top: 0;
+        }
+
+        .stroke .border.left {
+            border-left: 3px solid #362ae0;
+            left: 0;
+            bottom: 0;
+        }
+
+        .stroke.is-animated .border {
+            opacity: 1;
+        }
+
+        .stroke.is-animated .border.top,
+        .stroke.is-animated .border.bottom {
+            animation: stroke-width 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .stroke.is-animated .border.right,
+        .stroke.is-animated .border.left {
+            animation: stroke-height 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        @keyframes stroke-width {
+            0% {
+                width: 0;
+                opacity: 1;
+            }
+
+            100% {
+                width: calc(100% - 20px);
+                opacity: 1;
+            }
+        }
+
+        @keyframes stroke-height {
+            0% {
+                height: 0;
+                opacity: 1;
+            }
+
+            100% {
+                height: calc(100% - 20px);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div style="height: 800px;"></div>
+    <div>フェードイン</div>
+    <div class="animation anim-box fadein"></div>
+    <div>スライドイン</div>
+    <div class="animation anim-box slidein"></div>
+    <div>ズームイン</div>
+    <div class="animation anim-box zoomin"></div>
+    <div>ぽよんと跳ねる</div>
+    <div class="animation anim-box poyoyon"></div>
+    <div>ぽよんと跳ねる2</div>
+    <div class="animation anim-box poyoyon2"></div>
+    <div>ぽよんと跳ねる3</div>
+    <div class="animation anim-box poyoyon3"></div>
+    <div>斜めから出てくる</div>
+    <div class="animation anim-box slide-skew"></div>
+    <div>ポップアップ</div>
+    <div class="animation anim-box popup"></div>
+    <div>ぽよぽよと収縮する</div>
+    <div class="animation anim-box poyopoyo"></div>
+    <div>きらんと光る</div>
+    <div class="animation anim-box kiran"></div>
+    <div>背景色が流れてくる</div>
+    <div class="animation bg">
+        <span class="bg-wrap"><span class="inn">背景色が流れてくる</span></span><br>
+        <span class="bg-wrap"><span class="inn">アニメーション</span></span>
+    </div>
+    <div>文字がぬるりと現れる</div>
+    <div class="animation matrix anim">
+        <span class="bg-wrap"><span class="inn large">文字がぬるりと現れる</span></span>
+        <span class="bg-wrap"><span
+                class="inn small">サンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキスト<br>サンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキスト<br>サンプルテキストサンプルテキストサンプルテキスト</span></span>
+    </div>
+    <div>文字が消えてから表示される</div>
+    <div class="animation mask-bg anim">
+        背景色が消えてから表示される
+    </div>
+    <div>線が伸びる</div>
+    <div class="animation line anim"></div>
+
+    <div>フェードアップ</div>
+    <div class="animation anim-box fadeup"></div>
+
+    <div>ボーダーが穏やかにつく</div>
+    <div class="animation stroke anim">
+        <div class="border top"></div>
+        <div class="border right"></div>
+        <div class="border bottom"></div>
+        <div class="border left"></div>
+    </div>
+
+    <script>
+        //オプション  
+        const options = {
+            threshold: 0.9
+        }
+
+        //コールバック関数
+        const callback = (entries, observer) => {
+            entries.forEach((entry) => {
+                //監視対象の要素が領域内に入った場合の処理
+                console.log(entry.target, entry.isIntersecting)
+                if (entry.isIntersecting) {
+                    //監視対象の要素（entry の target プロパティ）に is-animated クラスを追加
+                    entry.target.classList.add('is-animated');
+                    //unobserve() メソッドで各要素の監視を停止
+                    observer.unobserve(entry.target);
+                }
+            });
+        }
+
+        //IntersectionObserver オブジェクト（オブザーバー）を生成
+        const observer = new IntersectionObserver(callback, options);
+
+        //監視する対象の要素（target クラスを指定した要素）を取得
+        const targets = document.querySelectorAll('.animation');
+
+        //全ての監視対象要素を observe() メソッドに指定
+        targets.forEach((elem) => {
+            //observe() に監視対象の要素を指定
+            observer.observe(elem);
+        });  
+    </script>
+</body>
+
+</html>
