@@ -602,7 +602,6 @@
         const callback = (entries, observer) => {
             entries.forEach((entry) => {
                 //監視対象の要素が領域内に入った場合の処理
-                console.log(entry.target, entry.isIntersecting)
                 if (entry.isIntersecting) {
                     //監視対象の要素（entry の target プロパティ）に is-animated クラスを追加
                     entry.target.classList.add('is-animated');
