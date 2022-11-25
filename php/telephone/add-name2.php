@@ -14,7 +14,7 @@ if (isset($_GET["tel"]) && $_GET['tel'] == '') {
 }
 
 // 電話番号をファイル(tel.txt)に書き込む
-if ($error_message == '' && !empty($_GET["username"]) && !empty($_GET["tel"])) {
+if (empty($error_message) && !empty($_GET["username"]) && !empty($_GET["tel"])) {
     $f = fopen("tel.txt", "a");
     fwrite($f, "名前:" . $_GET["username"] . " 電話番号:". $_GET["tel"] . "\n");
     fclose($f);
