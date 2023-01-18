@@ -1,4 +1,11 @@
 <?php
+// 条件分岐
+if (true) {
+    echo 'hello';
+}
 
-var_dump("0" == 0);
-var_dump("0" === 0);
+$name = '山田';
+if ($name == '山田' || $name == '田中') {
+    echo 'hello';
+}
+
