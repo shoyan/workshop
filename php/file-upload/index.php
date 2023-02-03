@@ -1,6 +1,4 @@
 <?php
-echo 1;
-exit;
 /**
  * 画像かどうかをチェックする
  */
@@ -45,14 +43,12 @@ function get_image_type($file_path) {
 }
 
 $uploaded = false;
-var_dump(1);
+
 if (!empty($_FILES['uploaded_file'])) { 
   $upload_dir = './upload_dir/';
   $uploaded_file = $upload_dir . basename($_FILES['uploaded_file']['name']);
-  var_dump(get_image_type($_FILES['uploaded_file']['tmp_name']));
 
   //画像ファイルかのチェック
-  var_dump(is_image_file($_files['uploaded_file']['tmp_name']));
   if (is_image_file($_files['uploaded_file']['tmp_name'])) {
     // move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $uploaded_file);
     $message = '画像をアップロードしました';
