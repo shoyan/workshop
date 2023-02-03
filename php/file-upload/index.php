@@ -96,7 +96,6 @@ $images = glob('./upload_dir/*');
   <?php endif ?>
 
   <form id="image-upload-form" enctype="multipart/form-data" action="index.php" method="POST">
-    <input type="hidden" name="name" value="value" />
     アップロード: <input name="uploaded_file" type="file" />
     <input class="upload-btn" type="submit" value="ファイルをアップロード" />
   </form>
