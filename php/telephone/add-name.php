@@ -1,6 +1,4 @@
 <?php
-print_r($_GET);
-
 // 電話番号をファイル(tel.txt)に書き込む
 if (isset($_GET["tel"])) {
     $f = fopen("tel.txt", "a");

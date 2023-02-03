@@ -6,6 +6,8 @@ if (true) {
 
 $name = '山田';
 if ($name == '山田' || $name == '田中') {
-    echo 'hello';
+    echo '該当しました。';
+} else {
+    echo '該当しませんでした。';
 }
 

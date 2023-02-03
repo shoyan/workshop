@@ -1,8 +1,11 @@
 <?php
 // 電話番号をファイル(tel.txt)に書き込む
 if (isset($_GET["tel"])) {
+    // tel.txtを開く
     $f = fopen("tel.txt", "a");
+    // tex.txtに書き込む
     fwrite($f, $_GET["tel"] . "\n");
+    // tex.txtを閉じる
     fclose($f);
 }
 ?>
