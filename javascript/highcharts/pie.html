@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+</head>
+<body>
+    <div id="container" style="width:100%; height:400px;"></div> 
+    <script>
+// Create the chart
+Highcharts.chart('container', {
+    chart: {
+        type: 'pie'
+    },
+    title: {
+        text: 'Browser market shares. January, 2022',
+        align: 'left'
+    },
+    subtitle: {
+        text: 'Click the slices to view versions. Source: <a href="http://statcounter.com" target="_blank">statcounter.com</a>',
+        align: 'left'
+    },
+
+    accessibility: {
+        announceNewData: {
+            enabled: true
+        },
+        point: {
+            valueSuffix: '%'
+        }
+    },
+
+    plotOptions: {
+        series: {
+            dataLabels: {
+                enabled: true,
+                format: '{point.name}: {point.y:.1f}%'
+            }
+        }
+    },
+
+    tooltip: {
+        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+    },
+
+    series: [
+        {
+            name: 'Browsers',
+            colorByPoint: true,
+            data: [
+                {
+                    name: 'Chrome',
+                    y: 61.04,
+                },
+                {
+                    name: 'Safari',
+                    y: 9.47,
+                },
+                {
+                    name: 'Edge',
+                    y: 9.32,
+                },
+                {
+                    name: 'Firefox',
+                    y: 8.15,
+                },
+                {
+                    name: 'Other',
+                    y: 11.02,
+                }
+            ]
+        } 
+    ]
+});
+    </script>
+</body>
+</html>
