@@ -4,10 +4,17 @@ require_once("database.php");
 require_once("function.php");
 
 $errors = [];
+
+if (!empty($_POST['email'])) {
+  $email = $_POST['email'];
+} else {
+  $email = '';
+}
+
 if (!empty($_POST)) {
   $user = findUserByEmail($dbh, $_POST["email"]);
 
-  if (password_verify($_POST["password"], $user["password"])) {
+  if ($user !== false && password_verify($_POST["password"], $user["password"])) {
     // ログイン状態にする
     $_SESSION["login"] = true;
     $_SESSION["user"]  = $user;
