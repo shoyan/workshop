@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+        #cssProperties {
+            position: relative;
+        }
+.shadow {
+  position: absolute;
+  opacity: .2;
+}
+
+.square {
+  pointer-events: none;
+  width: 28px;
+  height: 28px;
+  margin: 1px;
+  font-size: 12px;
+}
+.el {
+    position: relative;
+}
+    </style>
+</head>
+<body>
+    <div id="cssProperties">
+        <div class="square shadow"></div>
+        <div class="square el"></div>
+      </div>
+<script>
+var cssProperties = anime({
+  targets: '#cssProperties .el',
+  opacity: .5,
+  left: '240px',
+  backgroundColor: '#AAA',
+  borderRadius: ['0em', '2em'],
+  easing: 'easeInOutQuad'
+});
+</script>
+</body>
+</html>

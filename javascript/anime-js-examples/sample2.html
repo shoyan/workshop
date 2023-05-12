@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+        .text-output {
+          padding-top: 10px;
+          padding-bottom: 10px;
+          font-size: 16px;
+          color: currentColor;
+          text-align: center;
+          background-color: transparent;
+          border: 1px solid currentColor;
+        }
+    </style>
+</head>
+<body>
+    <div id="domAttributes">
+        <input class="text-output" value="0">
+    </div> 
+    <script>
+        var domAttributes = anime({
+          targets: '#domAttributes input',
+          value: 1000,
+          round: 1,
+          easing: 'easeInOutExpo'
+        });
+    </script>
+</body>
+</html>
