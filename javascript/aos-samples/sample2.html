@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AOSサンプル</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        .box {
+            width: 100%;
+            height: 1000px;
+            background-size: cover;
+            background-repeat: no-repeat;/*画像が繰り返すのを防ぐ*/
+            background-position: 50% 50%;
+            position: relative;
+        }
+        .container_01 {
+            background-image: url("image1.jpg");
+        }
+        .container_02 {
+            background-image: url("image2.jpg");
+        }
+        .item {
+            text-align: center;
+        }
+        img {
+            width: 400px;
+        }
+        p {
+          display: block;
+          color: #fff;
+          font-size: clamp(0.875rem, 3vw, 1.5rem);
+          background: rgba(0, 0, 0, 0.5);
+          padding: 3rem;
+          margin: 0;
+        }
+        .container {
+          width: 100%;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="box container_01">
+        <div class="container">
+            <p data-aos="fade-up">
+              あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。
+            </p>
+        </div>
+    </div>
+    <div class="box container_02">
+        <div class="container">
+            <p data-aos="fade-up">
+              あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。
+            </p>
+        </div>
+    </div>
+ 
+    <script>
+        AOS.init({
+            offset: 240,
+            delay: 100,
+        });
+    </script>
+</body>
+</html>

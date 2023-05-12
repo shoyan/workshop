@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AOSサンプル</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        .box {
+            height: 1000px;
+            background-color: blue;
+        }
+        .item {
+            text-align: center;
+        }
+        img {
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="item" data-aos="fade">
+        <img src="./image1.jpg" alt="" />
+    </div>
+    <div class="box"></div>
+    <div class="item" data-aos="fade-right">
+        <img src="./image1.jpg" alt="" />
+    </div>
+ 
+    <div class="box"></div>
+    <div class="item" data-aos="flip-up">
+        <img src="./image1.jpg" alt="" />
+    </div>
+    <div class="box"></div>
+    <div class="item" data-aos="zoom-in-up">
+        <img src="./image1.jpg" alt="" />
+    </div>
+    <script>
+        AOS.init({
+            offset: 240,
+            delay: 300,
+        });
+    </script>
+</body>
+</html>
