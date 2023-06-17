@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .matrix .bg-wrap,
+    .matrix .bg-wrap .inn {
+      display: block;
+    }
+     
+    .matrix .bg-wrap {
+      overflow: hidden;
+      opacity: 0;
+    }
+     
+    .matrix .bg-wrap + .bg-wrap {
+      margin-top: 10px;
+    }
+     
+    .matrix .bg-wrap .inn.large {
+      font-size: 36px;
+      font-weight: bold;
+    }
+    .matrix .bg-wrap .inn.small {
+      font-size: 15px;
+    }
+     
+    .matrix .bg-wrap .inn {
+      opacity: 0;
+      transform: matrix(1, 0, 0, 1, 0, 100);
+      transition: 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+     
+    .matrix.is-animated .bg-wrap {
+      opacity: 1;
+    }
+     
+    .matrix.is-animated .bg-wrap .inn {
+      opacity: 1;
+      transform: matrix(1, 0, 0, 1, 0, 0);
+    }
+    </style>
+</head>
+<body>
+    <div class="matrix anim">
+      <span class="bg-wrap"><span class="inn large">文字がぬるりと現れる</span></span>
+      <span class="bg-wrap"><span class="inn small">サンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキスト<br>サンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキスト<br>サンプルテキストサンプルテキストサンプルテキスト</span></span>
+    </div>
+
+    <div class="line anim"></div>
+
+    <script>
+       window.addEventListener('load', (event) => {
+         const anim = document.querySelector('.anim');
+         anim.classList.add('is-animated');
+       }); 
+    </script>
+</body>
+</html>

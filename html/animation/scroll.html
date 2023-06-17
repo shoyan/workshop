@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .anim-box {
+      background: linear-gradient(to right, #362ae0 0%, #3b79cc 50%, #42d3ed 100%);
+      border-radius: 5px;
+      max-width: 400px;
+      height: 250px;
+      margin: 20px 0;
+      opacity: 0;
+    }
+
+    /* フェードインのアニメーション */
+    .anim-box.fadein.is-animated {
+      animation: fadeIn 0.7s ease 0ms 1 normal forwards;
+    }
+
+    /* スライドインのアニメーション */
+    .anim-box.slidein.is-animated {
+      animation: slideIn 0.7s ease 0ms 1 normal forwards;
+    }
+
+    /* ズームインのアニメーション */
+    .anim-box.zoomin.is-animated {
+      animation: zoomIn 0.7s ease 0ms 1 normal forwards;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideIn {
+      0% {
+        transform: translateX(180px);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateX(0);
+      }
+
+      40%,
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes zoomIn {
+      0% {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div style="height: 1000px;"></div>
+  <div>フェードイン</div>
+  <div class="anim-box fadein"></div>
+  <div>スライドイン</div>
+  <div class="anim-box slidein"></div>
+  <div>ズームイン</div>
+  <div class="anim-box zoomin"></div>
+
+  <script>
+    //オプション  
+    const options = {
+      threshold : 0.9
+    }
+
+    //コールバック関数
+    const callback = (entries, observer) => {
+      entries.forEach((entry) => {
+        //監視対象の要素が領域内に入った場合の処理
+        if (entry.isIntersecting) {
+          //監視対象の要素（entry の target プロパティ）に is-animated クラスを追加
+          entry.target.classList.add('is-animated');
+          //unobserve() メソッドで各要素の監視を停止
+          observer.unobserve(entry.target);
+        }
+      });
+    }
+
+    //IntersectionObserver オブジェクト（オブザーバー）を生成
+    const observer = new IntersectionObserver(callback, options);
+
+    //監視する対象の要素（target クラスを指定した要素）を取得
+    const targets = document.querySelectorAll('.anim-box');
+
+      //全ての監視対象要素を observe() メソッドに指定
+      targets.forEach( (elem) => {
+        //observe() に監視対象の要素を指定
+        observer.observe(elem);
+      });  
+  </script>
+</body>
+
+</html>
