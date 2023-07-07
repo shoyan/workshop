@@ -52,36 +52,39 @@ functions.http('helloHttp', async (req, res) => {
   const event = req.body.events[0];
   const userId = event.source.userId;
 
-  if (event.type === 'message') {
-
-    const message = event.message.text;
-
-    // 書き込んだドキュメントを取得
-    const logsRef = db.collection('requests').doc(userId).collection('logs');
-    // 最新の3件を取得
-    const snapshot = await logsRef.orderBy('requestDate', 'desc').limit(3).get();
-    // 今日以降のリクエストのみフィルタリングする
-    const now = new Date() ;
-    const count = snapshot.docs.filter(doc => doc.data().requestDate.seconds > getTimestamp(now)).length
-
-    // 課金ユーザーチェック
-    const paidStatus = await getPaidStatus(userId);
-    // 課金ユーザーではない かつ 1日の利用回数が3件以上の場合は制限をかける
-    if (!paidStatus && count >= 3) {
-        const result = await lineClient.replyMessage(event.replyToken, { type: 'text', text: 'ごめんなさい。また明日連絡してくださいね。' });
-        res.json(result);
-        return;
-    } 
-
-    // 返信
-    const result = await lineClient.replyMessage(event.replyToken, { type: 'text', text: message });
-
-    // リクエストのログを記録
-    const data = {
-        requestDate: FieldValue.serverTimestamp(),
-    };
-    await db.collection('requests').doc(userId).collection('logs').add(data)
-
-    res.json(result);
+  // テキスト以外のメッセージには対応しない
+  if (event.type !== 'message' || event.message.type !== 'text') {
+    res.json(null);
+    return
   }
+
+  const message = event.message.text;
+
+  // 書き込んだドキュメントを取得
+  const logsRef = db.collection('requests').doc(userId).collection('logs');
+  // 最新の3件を取得
+  const snapshot = await logsRef.orderBy('requestDate', 'desc').limit(3).get();
+  // 今日以降のリクエストのみフィルタリングする
+  const now = new Date() ;
+  const count = snapshot.docs.filter(doc => doc.data().requestDate.seconds > getTimestamp(now)).length
+
+  // 課金ユーザーチェック
+  const paidStatus = await getPaidStatus(userId);
+  // 課金ユーザーではない かつ 1日の利用回数が3件以上の場合は制限をかける
+  if (!paidStatus && count >= 3) {
+      const result = await lineClient.replyMessage(event.replyToken, { type: 'text', text: 'ごめんなさい。また明日連絡してくださいね。' });
+      res.json(result);
+      return;
+  } 
+
+  // 返信
+  const result = await lineClient.replyMessage(event.replyToken, { type: 'text', text: message });
+
+  // リクエストのログを記録
+  const data = {
+      requestDate: FieldValue.serverTimestamp(),
+  };
+  await db.collection('requests').doc(userId).collection('logs').add(data)
+
+  res.json(result);
 });

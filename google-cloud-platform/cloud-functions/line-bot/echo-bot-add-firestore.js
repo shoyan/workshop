@@ -28,16 +28,20 @@ functions.http('helloHttp', async (req, res) => {
   const event = req.body.events[0];
   const userId = event.source.userId;
 
-  if (event.type === 'message') {
-    const message = event.message.text;
-    const result = await lineClient.replyMessage(event.replyToken, { type: 'text', text: message });
-
-    // リクエストのログを記録
-    const data = {
-        requestDate: FieldValue.serverTimestamp(),
-    };
-    await db.collection('requests').doc(userId).collection('logs').add(data)
-
-    res.json(result);
+  // テキスト以外のメッセージには対応しない
+  if (event.type !== 'message' || event.message.type !== 'text') {
+    res.json(null);
+    return
   }
+
+  const message = event.message.text;
+  const result = await lineClient.replyMessage(event.replyToken, { type: 'text', text: message });
+
+  // リクエストのログを記録
+  const data = {
+      requestDate: FieldValue.serverTimestamp(),
+  };
+  await db.collection('requests').doc(userId).collection('logs').add(data)
+
+  res.json(result);
 });

@@ -19,10 +19,14 @@ functions.http('helloHttp', async (req, res) => {
 
   const event = req.body.events[0];
 
-  if (event.type === 'message') {
-    // メッセージをオウム返しする
-    const message = event.message.text;
-    const result = await lineClient.replyMessage(event.replyToken, { type: 'text', text: message });
-    res.json(result);
+  // テキスト以外のメッセージには対応しない
+  if (event.type !== 'message' || event.message.type !== 'text') {
+    res.json(null);
+    return
   }
+
+  // メッセージをオウム返しする
+  const message = event.message.text;
+  const result = await lineClient.replyMessage(event.replyToken, { type: 'text', text: message });
+  res.json(result);
 });
