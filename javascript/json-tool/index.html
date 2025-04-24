@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON整形・バリデータ</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+    <!-- Bootstrap 5 CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      textarea {
+        width: 100%;
+        height: 150px;
+        font-family: monospace;
+        font-size: 14px;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+      }
+      button {
+        padding: 10px 15px;
+        font-size: 16px;
+        margin: 5px;
+        cursor: pointer;
+      }
+      pre {
+        background-color: #f4f4f4;
+        padding: 10px;
+        border: 1px solid #ccc;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+      .error {
+        color: red;
+      }
+      body {
+        background-color: #f8f9fa;
+      }
+      pre {
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+      #copyButton {
+        font-size: 0.875rem;
+        padding: 0.25rem 0.5rem;
+        z-index: 10;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container my-4">
+      <h1 class="mb-4">JSON整形ツール</h1>
+
+      <!-- 入力 -->
+      <div class="mb-3">
+        <label for="jsonInput" class="form-label">JSONを入力してください</label>
+        <textarea
+          id="jsonInput"
+          class="form-control"
+          rows="10"
+          placeholder='{"name": "田中太郎", "age": 28}'
+        ></textarea>
+      </div>
+
+      <!-- ボタン群 -->
+      <div class="mb-3">
+        <button id="formatButton" class="btn btn-primary me-2">整形</button>
+        <button id="compactButton" class="btn btn-secondary me-2">
+          コンパクト表示
+        </button>
+        <button id="markdownButton" class="btn btn-success me-2">
+          Markdownテーブル
+        </button>
+        <button id="sqlButton" class="btn btn-warning me-2">SQL出力</button>
+      </div>
+
+      <!-- エラー表示 -->
+      <div id="errorMessage" class="text-danger mb-3"></div>
+
+      <!-- 出力 -->
+      <div class="position-relative">
+        <pre id="jsonOutput" class="bg-light p-3 rounded">
+    <code class="language-json"></code>
+  </pre>
+
+        <!-- コピーアイコンボタン -->
+        <button
+          id="copyButton"
+          class="btn btn-sm btn-outline-secondary position-absolute top-0 end-0 m-2 d-flex align-items-center"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-clipboard me-1"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M10 1.5v1h2.5A1.5 1.5 0 0 1 14 4v9.5A1.5 1.5 0 0 1 12.5 15h-9A1.5 1.5 0 0 1 2 13.5V4A1.5 1.5 0 0 1 3.5 2.5H6v-1h4zM6 0h4a.5.5 0 0 1 .5.5V2H5.5V.5A.5.5 0 0 1 6 0z"
+            />
+          </svg>
+          コピー
+        </button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
