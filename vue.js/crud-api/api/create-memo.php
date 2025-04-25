@@ -52,22 +52,28 @@ try {
   ]);
   exit;
 }
-$body = $_POST['body'];
-// データベースに登録
-$stmt = $dbh->prepare("INSERT INTO memo (body) VALUES (?)");
-$stmt->bindValue(1, $body, PDO::PARAM_STR);
+$bodies = $_POST['body'];
 
-try {
-  $stmt->execute();
-} catch(PDOException $e) {
-  echo json_encode([
-      'error' => $e->getMessage(),
-  ]);
-  exit;
+$result = [];
+foreach($bodies as $body) {
+    // データベースに登録
+    $stmt = $dbh->prepare("INSERT INTO memo (body) VALUES (?)");
+    $stmt->bindValue(1, $body, PDO::PARAM_STR);
+    
+    try {
+      $stmt->execute();
+      $result[] = [
+        'id' => $dbh->lastInsertId(),
+        'body' => $body
+      ];
+    } catch(PDOException $e) {
+      echo json_encode([
+          'error' => $e->getMessage(),
+      ]);
+      exit;
+    }
 }
 
+
 // 連想配列をJSON形式の文字列に変換する
-echo json_encode([
-  'id' => $dbh->lastInsertId(),
-  'body' => $body
-]);
+echo json_encode($result);
