@@ -9,7 +9,14 @@ if (empty($_ENV['STRIPE_API_KEY'])) {
 
 $stripe = new \Stripe\StripeClient($_ENV['STRIPE_API_KEY']);
 
+$customer = ['id' => 'yamasaki0406'];
+$customerObj = $stripe->customers->create([
+  'metadata' => $customer,
+  'description' => 'My First Test Customer (created for API docs at https://www.stripe.com/docs/api)',
+]);
+
 $checkout_session = $stripe->checkout->sessions->create([
+  'customer' => $customerObj['id'],
   'line_items' => [[
     'price_data' => [
       'currency' => 'jpy',
