@@ -39,7 +39,8 @@ functions.http('helloHttp', async (req, res) => {
 
   // リクエストのログを記録
   const data = {
-      requestDate: FieldValue.serverTimestamp(),
+    message: message,
+    requestDate: FieldValue.serverTimestamp(),
   };
   await db.collection('requests').doc(userId).collection('logs').add(data)
 
