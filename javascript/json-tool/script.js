@@ -1,38 +1,24 @@
 let currentJson = ""; // JSONを保持する変数
 
 document.getElementById("formatButton").addEventListener("click", function () {
-  const input = document.getElementById("jsonInput").value;
-  const outputElement = document.getElementById("jsonOutput");
-  const errorMessageElement = document.getElementById("errorMessage");
+  const json = getValidJsonInput();
+  if (!json) return;
 
-  try {
-    const parsedJson = JSON.parse(input); // JSONをパース
-    currentJson = JSON.stringify(parsedJson, null, 2); // 整形後JSONを保持
-    outputElement.textContent = currentJson; // 整形表示
-    errorMessageElement.textContent = ""; // エラーメッセージをクリア
-    Prism.highlightElement(outputElement); // Prismで色付け
-  } catch (e) {
-    outputElement.textContent = ""; // 出力をクリア
-    errorMessageElement.textContent = "無効なJSONです: " + e.message; // エラーメッセージを表示
-  }
+  const outputElement = document.getElementById("jsonOutput");
+  const formatted = JSON.stringify(json, null, 2);
+  outputElement.textContent = formatted;
+  document.getElementById("errorMessage").textContent = "";
+  Prism.highlightElement(outputElement); // Prismで色付け
 });
 
 // コンパクト表示
-document.getElementById("compactButton").addEventListener("click", function () {
-  const outputElement = document.getElementById("jsonOutput");
-  const errorMessageElement = document.getElementById("errorMessage");
+document.getElementById("compactButton").addEventListener("click", () => {
+  const json = getValidJsonInput();
+  if (!json) return;
 
-  try {
-    if (currentJson) {
-      const compactJson = JSON.stringify(JSON.parse(currentJson)); // コンパクト表示
-      outputElement.textContent = compactJson; // コンパクト表示
-      errorMessageElement.textContent = ""; // エラーメッセージをクリア
-      Prism.highlightElement(outputElement); // Prismで色付け
-    }
-  } catch (e) {
-    outputElement.textContent = ""; // 出力をクリア
-    errorMessageElement.textContent = "無効なJSONです: " + e.message; // エラーメッセージを表示
-  }
+  const compact = JSON.stringify(json);
+  document.getElementById("jsonOutput").innerText = compact;
+  document.getElementById("errorMessage").textContent = "";
 });
 
 // マークダウンテーブルに変換
@@ -42,15 +28,12 @@ document
     const outputElement = document.getElementById("jsonOutput");
     const errorMessageElement = document.getElementById("errorMessage");
 
-    try {
-      const parsedJson = JSON.parse(currentJson);
-      const markdownTable = jsonToMarkdown(parsedJson);
-      outputElement.textContent = markdownTable; // マークダウン形式のテーブルを表示
-      errorMessageElement.textContent = ""; // エラーメッセージをクリア
-    } catch (e) {
-      outputElement.textContent = ""; // 出力をクリア
-      errorMessageElement.textContent = "無効なJSONです: " + e.message; // エラーメッセージを表示
-    }
+    const json = getValidJsonInput();
+    if (!json) return;
+
+    const markdownTable = jsonToMarkdown(json);
+    outputElement.textContent = markdownTable; // マークダウン形式のテーブルを表示
+    errorMessageElement.textContent = ""; // エラーメッセージをクリア
   });
 
 // SQLのINSERT文に変換
@@ -58,15 +41,12 @@ document.getElementById("sqlButton").addEventListener("click", function () {
   const outputElement = document.getElementById("jsonOutput");
   const errorMessageElement = document.getElementById("errorMessage");
 
-  try {
-    const parsedJson = JSON.parse(currentJson);
-    const sqlInsert = jsonToSQLInsert(parsedJson, "your_table_name"); // テーブル名は適宜変更
-    outputElement.textContent = sqlInsert; // SQL文を表示
-    errorMessageElement.textContent = ""; // エラーメッセージをクリア
-  } catch (e) {
-    outputElement.textContent = ""; // 出力をクリア
-    errorMessageElement.textContent = "無効なJSONです: " + e.message; // エラーメッセージを表示
-  }
+  const json = getValidJsonInput();
+  if (!json) return;
+
+  const sqlInsert = jsonToSQLInsert(json, "your_table_name"); // テーブル名は適宜変更
+  outputElement.textContent = sqlInsert; // SQL文を表示
+  errorMessageElement.textContent = ""; // エラーメッセージをクリア
 });
 
 // JSONをマークダウン形式のテーブルに変換する関数
@@ -150,3 +130,14 @@ document.getElementById("jsonInput").addEventListener("input", () => {
   const jsonText = document.getElementById("jsonInput").value;
   sessionStorage.setItem("jsonInput", jsonText);
 });
+
+function getValidJsonInput() {
+  const input = document.getElementById("jsonInput").value;
+  try {
+    return JSON.parse(input);
+  } catch (e) {
+    document.getElementById("errorMessage").textContent =
+      "❌ JSONの形式が正しくありません。";
+    return null;
+  }
+}
