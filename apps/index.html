@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>便利ツール集</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #f8f9fa;
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+
+      .card {
+        transition: transform 0.3s, box-shadow 0.3s;
+        height: 100%;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .card-header {
+        padding: 1.5rem 1rem;
+        text-align: center;
+      }
+
+      .card-icon {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .json-color {
+        background: linear-gradient(135deg, #e74c3c, #c0392b);
+        color: white;
+      }
+
+      .password-color {
+        background: linear-gradient(135deg, #2ecc71, #27ae60);
+        color: white;
+      }
+
+      .url-color {
+        background: linear-gradient(135deg, #9b59b6, #8e44ad);
+        color: white;
+      }
+
+      .btn-custom {
+        padding: 0.6rem 1.5rem;
+        border-radius: 30px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-top: 1rem;
+      }
+
+      .btn-json {
+        background-color: #e74c3c;
+        border-color: #e74c3c;
+        color: white;
+      }
+
+      .btn-json:hover {
+        background-color: #c0392b;
+        border-color: #c0392b;
+        color: white;
+      }
+
+      .btn-password {
+        background-color: #2ecc71;
+        border-color: #2ecc71;
+        color: white;
+      }
+
+      .btn-password:hover {
+        background-color: #27ae60;
+        border-color: #27ae60;
+        color: white;
+      }
+
+      .btn-url {
+        background-color: #9b59b6;
+        border-color: #9b59b6;
+        color: white;
+      }
+
+      .btn-url:hover {
+        background-color: #8e44ad;
+        border-color: #8e44ad;
+        color: white;
+      }
+
+      .page-header {
+        border-radius: 10px;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        margin-bottom: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- ヘッダー -->
+      <div class="page-header text-center">
+        <h1 class="display-4 fw-bold">便利ツール集</h1>
+        <p class="lead text-muted">
+          日常作業を効率化する便利なオンラインツール
+        </p>
+      </div>
+
+      <!-- ツールグリッド -->
+      <div class="row g-4">
+        <!-- JSON整形ツール -->
+        <div class="col-md-4">
+          <div class="card shadow-sm h-100">
+            <div class="card-header json-color">
+              <div class="card-icon">🔧</div>
+              <h2 class="h4 mb-0">JSON整形ツール</h2>
+            </div>
+            <div class="card-body d-flex flex-column">
+              <p class="card-text flex-grow-1">
+                複雑なJSON文字列を見やすく整形します。構文エラーのチェックや、インデントの調整も可能です。
+              </p>
+              <div class="text-center mt-auto">
+                <a href="json/" class="btn btn-custom btn-json"
+                  >ツールを使う</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- パスワード生成ツール -->
+        <div class="col-md-4">
+          <div class="card shadow-sm h-100">
+            <div class="card-header password-color">
+              <div class="card-icon">🔒</div>
+              <h2 class="h4 mb-0">パスワード生成ツール</h2>
+            </div>
+            <div class="card-body d-flex flex-column">
+              <p class="card-text flex-grow-1">
+                安全で強力なパスワードを簡単に生成します。長さや含める文字種を自由にカスタマイズできます。
+              </p>
+              <div class="text-center mt-auto">
+                <a
+                  href="pw-generator/"
+                  class="btn btn-custom btn-password"
+                  >ツールを使う</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- URL短縮ツール -->
+        <div class="col-md-4">
+          <div class="card shadow-sm h-100">
+            <div class="card-header url-color">
+              <div class="card-icon">🔗</div>
+              <h2 class="h4 mb-0">URL短縮ツール</h2>
+            </div>
+            <div class="card-body d-flex flex-column">
+              <p class="card-text flex-grow-1">
+                長いURLを短く簡潔なリンクに変換します。共有やメッセージでの使用に最適です。
+              </p>
+              <div class="text-center mt-auto">
+                <a href="url-shortener/" class="btn btn-custom btn-url"
+                  >ツールを使う</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- フッター -->
+      <footer class="mt-5 text-center text-muted">
+        <p>&copy; 2025 便利ツール集. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
