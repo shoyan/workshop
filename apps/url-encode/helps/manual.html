@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URLエンコード・デコードツール - ユーザーマニュアル</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+        }
+        h1, h2, h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0d6efd;
+        }
+        .card {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        code {
+            background-color: #f1f1f1;
+            padding: 2px 4px;
+            border-radius: 4px;
+            color: #d63384;
+        }
+        .img-thumbnail {
+            margin: 15px 0;
+            max-width: 100%;
+        }
+        .nav-link {
+            padding: 8px 16px;
+        }
+        .nav-pills .nav-link.active {
+            background-color: #0d6efd;
+        }
+        .back-button {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5 mb-5">
+        <div class="text-center mb-4">
+            <h1>URLエンコード・デコードツール</h1>
+            <h2 class="h4 text-muted">ユーザーマニュアル</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 mb-4">
+                <div class="card sticky-top" style="top: 20px;">
+                    <div class="card-header bg-primary text-white">
+                        目次
+                    </div>
+                    <div class="card-body p-2">
+                        <nav class="nav nav-pills flex-column">
+                            <a class="nav-link active" href="#overview">概要</a>
+                            <a class="nav-link" href="#encode">URLエンコード</a>
+                            <a class="nav-link" href="#decode">URLデコード</a>
+                            <a class="nav-link" href="#batch">一括処理</a>
+                            <a class="nav-link" href="#tips">便利な使い方</a>
+                            <a class="nav-link" href="#faq">よくある質問</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-body">
+                        <a href="../index.html" class="btn btn-outline-primary back-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                            </svg>
+                            ツールに戻る
+                        </a>
+
+                        <section id="overview">
+                            <h2>概要</h2>
+                            <p>URLエンコード・デコードツールは、テキストやURLをエンコードまたはデコードするためのシンプルかつ効率的なツールです。ウェブ開発、APIテスト、URLパラメータの生成などに役立ちます。</p>
+                            
+                            <h3>主な機能</h3>
+                            <ul>
+                                <li>テキストのURLエンコード（特殊文字をURL安全な形式に変換）</li>
+                                <li>エンコードされたテキストのデコード（元の形式に戻す）</li>
+                                <li>リアルタイム変換（入力時に自動的に変換）</li>
+                                <li>複数URLの一括処理</li>
+                                <li>結果のクリップボードへのコピー</li>
+                            </ul>
+                        </section>
+
+                        <section id="encode">
+                            <h2>URLエンコード</h2>
+                            <p>URLエンコードは、URLで安全に使用できない特殊文字（スペース、日本語、記号など）をパーセント記号（%）と16進数の組み合わせに変換するプロセスです。</p>
+                            
+                            <h3>使い方</h3>
+                            <ol>
+                                <li>「エンコードするテキスト」欄に変換したいテキストを入力します。</li>
+                                <li>入力すると自動的に結果が「エンコード結果」欄に表示されます。</li>
+                                <li>または「エンコード」ボタンをクリックして変換することもできます。</li>
+                                <li>「結果をコピー」ボタンで、変換結果をクリップボードにコピーできます。</li>
+                                <li>「クリア」ボタンで入力と結果をリセットできます。</li>
+                            </ol>
+                            
+                            <h3>変換例</h3>
+                            <table class="table table-bordered">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>元のテキスト</th>
+                                        <th>エンコード結果</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Hello World</td>
+                                        <td>Hello%20World</td>
+                                    </tr>
+                                    <tr>
+                                        <td>こんにちは</td>
+                                        <td>%E3%81%93%E3%82%93%E3%81%AB%E3%81%A1%E3%81%AF</td>
+                                    </tr>
+                                    <tr>
+                                        <td>name=山田&age=30</td>
+                                        <td>name%3D%E5%B1%B1%E7%94%B0%26age%3D30</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+
+                        <section id="decode">
+                            <h2>URLデコード</h2>
+                            <p>URLデコードは、エンコードされたURL文字列を元の形式に戻すプロセスです。パーセント記号と16進数の組み合わせを元の特殊文字に戻します。</p>
+                            
+                            <h3>使い方</h3>
+                            <ol>
+                                <li>「デコードするテキスト」欄にエンコードされたテキストを入力します。</li>
+                                <li>入力すると自動的に結果が「デコード結果」欄に表示されます。</li>
+                                <li>または「デコード」ボタンをクリックして変換することもできます。</li>
+                                <li>「結果をコピー」ボタンで、変換結果をクリップボードにコピーできます。</li>
+                                <li>「クリア」ボタンで入力と結果をリセットできます。</li>
+                            </ol>
+                            
+                            <h3>変換例</h3>
+                            <table class="table table-bordered">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>エンコードされたテキスト</th>
+                                        <th>デコード結果</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Hello%20World</td>
+                                        <td>Hello World</td>
+                                    </tr>
+                                    <tr>
+                                        <td>%E3%81%93%E3%82%93%E3%81%AB%E3%81%A1%E3%81%AF</td>
+                                        <td>こんにちは</td>
+                                    </tr>
+                                    <tr>
+                                        <td>name%3D%E5%B1%B1%E7%94%B0%26age%3D30</td>
+                                        <td>name=山田&age=30</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+
+                        <section id="batch">
+                            <h2>一括処理</h2>
+                            <p>複数のURL（または文字列）を一度に処理したい場合に便利な機能です。各URLを別々の行に入力することで、まとめてエンコードまたはデコードできます。</p>
+                            
+                            <h3>使い方</h3>
+                            <ol>
+                                <li>「一括処理する複数のURL」欄に、処理したいURLを1行に1つずつ入力します。</li>
+                                <li>「一括エンコード」または「一括デコード」ボタンをクリックします。</li>
+                                <li>結果が「処理結果」欄に表示されます（各行が個別に処理されます）。</li>
+                                <li>「結果をコピー」ボタンで、変換結果をクリップボードにコピーできます。</li>
+                                <li>「クリア」ボタンで入力と結果をリセットできます。</li>
+                            </ol>
+                            
+                            <h3>使用例</h3>
+                            <p>以下のような入力がある場合：</p>
+                            <pre><code>https://example.com?name=山田太郎
+https://example.com?title=こんにちは世界
+https://example.com?tag=プログラミング&lang=ja</code></pre>
+                            
+                            <p>「一括エンコード」をクリックすると、以下のような結果が得られます：</p>
+                            <pre><code>https%3A%2F%2Fexample.com%3Fname%3D%E5%B1%B1%E7%94%B0%E5%A4%AA%E9%83%8E
+https%3A%2F%2Fexample.com%3Ftitle%3D%E3%81%93%E3%82%93%E3%81%AB%E3%81%A1%E3%81%AF%E4%B8%96%E7%95%8C
+https%3A%2F%2Fexample.com%3Ftag%3D%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%26lang%3Dja</code></pre>
+                        </section>
+
+                        <section id="tips">
+                            <h2>便利な使い方</h2>
+                            
+                            <h3>リアルタイム変換</h3>
+                            <p>入力欄にテキストを入力すると、自動的に変換結果が更新されます。ボタンをクリックする必要はありません。</p>
+                            
+                            <h3>クリップボードの活用</h3>
+                            <p>「結果をコピー」ボタンを使うと、変換結果を簡単にクリップボードにコピーできます。コピーが成功すると、テキストエリアが緑色に点滅して視覚的にフィードバックを提供します。</p>
+                            
+                            <h3>URL一部のみのエンコード/デコード</h3>
+                            <p>URLの一部（クエリパラメータなど）だけをエンコード/デコードしたい場合は、その部分だけを入力欄に入力して処理することができます。</p>
+                        </section>
+
+                        <section id="faq">
+                            <h2>よくある質問</h2>
+                            
+                            <div class="accordion" id="faqAccordion">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            URLエンコードとは何ですか？
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            <p>URLエンコードは、URL内で使用できない特殊文字（スペース、日本語、一部の記号など）を、Webブラウザが安全に処理できる形式に変換するプロセスです。変換されたテキストでは、特殊文字はパーセント記号（%）とその文字のASCIIコードの16進表現で置き換えられます。例えば、スペースは「%20」になります。</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingTwo">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            どのような場合にURLエンコードが必要ですか？
+                                        </button>
+                                    </h2>
+                                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            <p>以下のような状況でURLエンコードが必要です：</p>
+                                            <ul>
+                                                <li>URLのクエリパラメータに日本語や特殊文字を含める場合</li>
+                                                <li>WebフォームからデータをPOSTする際</li>
+                                                <li>APIリクエストのパラメータを作成する場合</li>
+                                                <li>URLに空白やパーセント記号、アンパサンド（&）などの特殊文字を含める場合</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingThree">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                            エンコードで起きるエラーの対処法は？
+                                        </button>
+                                    </h2>
+                                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            <p>エンコード・デコード処理で発生する可能性のあるエラーとその対処法：</p>
+                                            <ul>
+                                                <li><strong>「無効な入力です」エラー：</strong> 入力されたテキストが正しいか確認してください。非常に長いテキストや特殊な制御文字を含む場合に発生することがあります。</li>
+                                                <li><strong>「無効なエンコード形式です」エラー：</strong> デコードしようとしているテキストが正しくURLエンコードされていない可能性があります。特に、パーセント記号の後に正しい16進数字が続いていない場合に発生します。</li>
+                                                <li><strong>クリップボードへのコピーに失敗：</strong> ブラウザがクリップボードへのアクセス権を持っていない可能性があります。手動で結果をコピーするか、ブラウザの設定を確認してください。</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingFour">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                            一部のURLだけがエンコードされないのはなぜですか？
+                                        </button>
+                                    </h2>
+                                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            <p>URLエンコードは、英数字（a-z、A-Z、0-9）や一部の記号（「-」、「_」、「.」、「~」）はエンコードしません。これらの文字はURL内で安全に使用できるため、変換する必要がないからです。その他のほとんどの文字は変換されます。</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <a href="../index.html" class="btn btn-outline-primary back-button mt-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                            </svg>
+                            ツールに戻る
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // スムーズスクロールのための JavaScript
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                // ナビゲーションリンクのアクティブ状態を更新
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

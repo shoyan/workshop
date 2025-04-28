@@ -1,0 +1,51 @@
+/* Custom styles for URL Encoder/Decoder Tool */
+
+body {
+    background-color: #f8f9fa;
+}
+
+.card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.card-header {
+    font-weight: bold;
+}
+
+textarea {
+    resize: none;
+    font-family: monospace;
+}
+
+.btn {
+    margin-right: 5px;
+}
+
+footer {
+    padding: 20px 0;
+    border-top: 1px solid #dee2e6;
+}
+
+/* Feedback animations */
+.copy-success {
+    animation: flash-green 1s;
+}
+
+@keyframes flash-green {
+    0% { background-color: transparent; }
+    50% { background-color: rgba(40, 167, 69, 0.2); }
+    100% { background-color: transparent; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 767.98px) {
+    .d-flex {
+        flex-wrap: wrap;
+    }
+    
+    .btn {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+}
