@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // 変換フォーム
       dateInput: document.getElementById('date-input'),
       timeInput: document.getElementById('time-input'),
+      datetimeInput: document.getElementById('datetime-input'),
       sourceTimezone: document.getElementById('source-timezone'),
       targetTimezone: document.getElementById('target-timezone'),
       convertBtn: document.getElementById('convert-btn'),
@@ -101,8 +102,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const hours = String(now.getHours()).padStart(2, '0');
     const minutes = String(now.getMinutes()).padStart(2, '0');
     
+    // テキストフィールドに日付と時間をセット
     elements.dateInput.value = `${year}-${month}-${day}`;
     elements.timeInput.value = `${hours}:${minutes}`;
+    
+    // シンプル入力フィールドにも日時をセット
+    elements.datetimeInput.value = `${year}-${month}-${day} ${hours}:${minutes}`;
     
     // ミーティングプランナーの日付も設定
     elements.meetingDate.value = `${year}-${month}-${day}`;

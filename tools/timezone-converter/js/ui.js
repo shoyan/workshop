@@ -1,7 +1,7 @@
 /**
  * UI関連の機能を管理するモジュール
  */
-import { convertTime, copyUrlToClipboard } from './converter.js';
+import { convertTime, copyUrlToClipboard, parseDatetimeString } from './converter.js';
 import { addToFavorites } from './favorites.js';
 import { addWorldClock } from './worldclock.js';
 import { addParticipant, findOptimalMeetingTimes } from './meetingplanner.js';
@@ -93,10 +93,45 @@ export function setupEventListeners(elements, config) {
     localStorage.setItem('theme', 'dark');
   });
   
+  // 入力タブ切り替え
+  const inputTabBtns = document.querySelectorAll('.input-tab-btn');
+  inputTabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const inputTabId = btn.dataset.inputTab;
+      
+      // アクティブクラスを切り替え
+      inputTabBtns.forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.input-tab-content').forEach(c => c.classList.remove('active'));
+      
+      btn.classList.add('active');
+      document.getElementById(inputTabId).classList.add('active');
+    });
+  });
+  
   // 変換ボタン
   elements.convertBtn.addEventListener('click', () => {
     convertTime(elements, config);
   });
+  
+  // 日時一括入力フィールドの入力イベント
+  if (elements.datetimeInput) {
+    elements.datetimeInput.addEventListener('blur', () => {
+      if (elements.datetimeInput.value.trim()) {
+        const parsedDateTime = parseDatetimeString(elements.datetimeInput.value.trim());
+        if (parsedDateTime) {
+          elements.dateInput.value = parsedDateTime.date;
+          elements.timeInput.value = parsedDateTime.time;
+        }
+      }
+    });
+    
+    // Enterキー押下時の処理
+    elements.datetimeInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        convertTime(elements, config);
+      }
+    });
+  }
   
   // お気に入り追加ボタン
   elements.addFavoriteBtn.addEventListener('click', () => {

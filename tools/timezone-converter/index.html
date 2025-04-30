@@ -33,14 +33,33 @@
           <div class="card">
             <h2>タイムゾーン変換</h2>
 
-            <div class="input-group">
-              <label for="date-input">日付:</label>
-              <input type="date" id="date-input" />
-            </div>
-
-            <div class="input-group">
-              <label for="time-input">時間:</label>
-              <input type="time" id="time-input" />
+            <div class="input-tabs">
+              <div class="input-tab-buttons">
+                <button class="input-tab-btn" data-input-tab="form-input">フォーム入力</button>
+                <button class="input-tab-btn active" data-input-tab="direct-input">シンプル入力</button>
+              </div>
+              
+              <div id="form-input" class="input-tab-content">
+                <div class="input-group">
+                  <label for="date-input">日付:</label>
+                  <input type="text" id="date-input" placeholder="YYYY-MM-DD" />
+                </div>
+                
+                <div class="input-group">
+                  <label for="time-input">時間:</label>
+                  <input type="text" id="time-input" placeholder="HH:MM" />
+                </div>
+              </div>
+              
+              <div id="direct-input" class="input-tab-content active">
+                <div class="input-group">
+                  <label for="datetime-input">日時:</label>
+                  <input type="text" id="datetime-input" placeholder="YYYY-MM-DD HH:MM または YYYY/MM/DD HH:MM など" />
+                  <div class="input-hint">
+                    対応フォーマット: YYYY-MM-DD HH:MM, YYYY/MM/DD HH:MM, MM/DD/YYYY HH:MM, DD.MM.YYYY HH:MM
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div class="input-group">
@@ -118,7 +137,7 @@
 
             <div class="date-selection">
               <h3>日付を選択</h3>
-              <input type="date" id="meeting-date" />
+              <input type="text" id="meeting-date" placeholder="YYYY-MM-DD" />
             </div>
 
             <button id="find-times" class="primary-btn">

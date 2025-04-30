@@ -6,24 +6,67 @@
  * 時間変換を実行
  */
 export function convertTime(elements, config) {
-  // 入力チェック
-  if (!elements.dateInput.value || !elements.timeInput.value) {
-    alert('日付と時間を入力してください。');
-    return;
+  let dateValue, timeValue;
+  
+  // 一括入力フィールドから入力された場合
+  if (elements.datetimeInput && elements.datetimeInput.value.trim()) {
+    const datetimeStr = elements.datetimeInput.value.trim();
+    const parsedDateTime = parseDatetimeString(datetimeStr);
+    
+    if (parsedDateTime) {
+      // 日付と時間のフィールドに値をセット
+      elements.dateInput.value = parsedDateTime.date;
+      elements.timeInput.value = parsedDateTime.time;
+      
+      dateValue = parsedDateTime.date;
+      timeValue = parsedDateTime.time;
+    } else {
+      alert('対応していない日時フォーマットです。以下のいずれかの形式で入力してください：\n' +
+            'YYYY-MM-DD HH:MM\n' +
+            'YYYY/MM/DD HH:MM\n' +
+            'MM/DD/YYYY HH:MM\n' +
+            'DD.MM.YYYY HH:MM');
+      return;
+    }
+  } else {
+    // 個別フィールドから入力された場合
+    // 入力チェック
+    if (!elements.dateInput.value || !elements.timeInput.value) {
+      alert('日付と時間を入力してください。');
+      return;
+    }
+    
+    // 日付形式チェック (YYYY-MM-DD)
+    dateValue = elements.dateInput.value.trim();
+    const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+    if (!dateRegex.test(dateValue)) {
+      alert('日付はYYYY-MM-DD形式で入力してください。例: 2025-04-30');
+      return;
+    }
+    
+    // 時間形式チェック (HH:MM)
+    timeValue = elements.timeInput.value.trim();
+    const timeRegex = /^([01][0-9]|2[0-3]):([0-5][0-9])$/;
+    if (!timeRegex.test(timeValue)) {
+      alert('時間はHH:MM形式で入力してください。例: 15:30');
+      return;
+    }
   }
   
   const sourceTimezoneValue = elements.sourceTimezone.value;
   const targetTimezoneValue = elements.targetTimezone.value;
   
-  // 入力された日時を取得
-  const inputDate = elements.dateInput.value;
-  const inputTime = elements.timeInput.value;
-  
   // 日時文字列を作成（ISO 8601形式）
-  const dateTimeStr = `${inputDate}T${inputTime}:00`;
+  const dateTimeStr = `${dateValue}T${timeValue}:00`;
   
   // 日時オブジェクトを作成（入力はローカルタイムとして解釈）
   const date = new Date(dateTimeStr);
+  
+  // 無効な日付チェック
+  if (isNaN(date.getTime())) {
+    alert('無効な日付または時間です。正しい値を入力してください。');
+    return;
+  }
   
   // 元のタイムゾーンの情報を取得
   const sourceDateOptions = {
@@ -108,8 +151,16 @@ export function loadFromUrlHash(elements, config) {
   const dateTimeParts = datetime.split('T');
   if (dateTimeParts.length !== 2) return false;
   
-  const date = dateTimeParts[0];
+  const date = dateTimeParts[0]; // YYYY-MM-DD 形式
   const time = dateTimeParts[1].substring(0, 5); // HH:MM の部分だけ
+  
+  // 日付と時間が正しい形式かチェック
+  const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+  const timeRegex = /^([01][0-9]|2[0-3]):([0-5][0-9])$/;
+  
+  if (!dateRegex.test(date) || !timeRegex.test(time)) {
+    return false;
+  }
   
   // フォームに値をセット
   elements.dateInput.value = date;
@@ -137,4 +188,59 @@ export function copyUrlToClipboard() {
       console.error('URLのコピーに失敗しました:', err);
       alert('URLのコピーに失敗しました。');
     });
+}
+
+/**
+ * 複数のフォーマットの日時文字列をパースする
+ */
+export function parseDatetimeString(datetimeStr) {
+  // 空文字列のチェック
+  if (!datetimeStr || !datetimeStr.trim()) {
+    return null;
+  }
+  
+  datetimeStr = datetimeStr.trim();
+  
+  // YYYY-MM-DD HH:MM 形式
+  let match = datetimeStr.match(/^(\d{4})-(\d{1,2})-(\d{1,2})\s+(\d{1,2}):(\d{1,2})$/);
+  if (match) {
+    const [_, year, month, day, hour, minute] = match;
+    return {
+      date: `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`,
+      time: `${hour.padStart(2, '0')}:${minute.padStart(2, '0')}`
+    };
+  }
+  
+  // YYYY/MM/DD HH:MM 形式
+  match = datetimeStr.match(/^(\d{4})\/(\d{1,2})\/(\d{1,2})\s+(\d{1,2}):(\d{1,2})$/);
+  if (match) {
+    const [_, year, month, day, hour, minute] = match;
+    return {
+      date: `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`,
+      time: `${hour.padStart(2, '0')}:${minute.padStart(2, '0')}`
+    };
+  }
+  
+  // MM/DD/YYYY HH:MM 形式
+  match = datetimeStr.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})\s+(\d{1,2}):(\d{1,2})$/);
+  if (match) {
+    const [_, month, day, year, hour, minute] = match;
+    return {
+      date: `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`,
+      time: `${hour.padStart(2, '0')}:${minute.padStart(2, '0')}`
+    };
+  }
+  
+  // DD.MM.YYYY HH:MM 形式
+  match = datetimeStr.match(/^(\d{1,2})\.(\d{1,2})\.(\d{4})\s+(\d{1,2}):(\d{1,2})$/);
+  if (match) {
+    const [_, day, month, year, hour, minute] = match;
+    return {
+      date: `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`,
+      time: `${hour.padStart(2, '0')}:${minute.padStart(2, '0')}`
+    };
+  }
+  
+  // 一致しない場合
+  return null;
 }

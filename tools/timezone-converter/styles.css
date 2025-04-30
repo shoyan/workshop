@@ -162,6 +162,13 @@ header p {
   font-weight: 500;
 }
 
+.input-hint {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  margin-top: 5px;
+  font-style: italic;
+}
+
 input[type="date"],
 input[type="time"],
 input[type="text"],
@@ -490,4 +497,49 @@ footer p {
   .world-clocks-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* 入力タブ */
+.input-tabs {
+  margin-bottom: 20px;
+}
+
+.input-tab-buttons {
+  display: flex;
+  background-color: var(--card-bg);
+  border-radius: 20px;
+  padding: 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+}
+
+.input-tab-btn {
+  flex: 1;
+  padding: 8px 15px;
+  border: none;
+  background-color: transparent;
+  color: var(--text-light);
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: 18px;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.input-tab-btn.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.input-tab-btn:hover:not(.active) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.input-tab-content {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.input-tab-content.active {
+  display: block;
 }
