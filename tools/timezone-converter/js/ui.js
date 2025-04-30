@@ -15,7 +15,7 @@ export function initializeTimezoneSelects(elements, timezones) {
   
   // 変換フォームのセレクトボックス
   populateTimezoneSelect(elements.sourceTimezone, timezones, userTimezone);
-  populateTimezoneSelect(elements.targetTimezone, timezones, 'America/New_York');
+  populateTimezoneSelect(elements.targetTimezone, timezones, 'UTC');
   
   // 世界時計追加用のセレクトボックス
   populateTimezoneSelect(elements.addWorldClockSelect, timezones);

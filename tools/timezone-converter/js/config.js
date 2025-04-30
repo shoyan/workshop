@@ -10,6 +10,7 @@ export function initializeConfig() {
   return {
     // タイムゾーンリスト
     timezones: [
+      { value: 'UTC', label: 'UTC (GMT+0)' },
       { value: 'Asia/Tokyo', label: '東京 (GMT+9)' },
       { value: 'Asia/Seoul', label: 'ソウル (GMT+9)' },
       { value: 'Asia/Shanghai', label: '上海 (GMT+8)' },
@@ -31,6 +32,7 @@ export function initializeConfig() {
     
     // 都市表示名
     cityNames: {
+      'UTC': 'UTC',
       'Asia/Tokyo': '東京',
       'Asia/Seoul': 'ソウル',
       'Asia/Shanghai': '上海',
