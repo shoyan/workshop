@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TimeZoneConverter - タイムゾーン変換ツール</title>
+    <link rel="stylesheet" href="timezone-converter/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1><i class="fas fa-globe"></i> TimeZoneConverter</h1>
+        <p>世界中の時間を簡単に変換できるツール</p>
+      </header>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="converter">
+          シンプル変換
+        </button>
+        <button class="tab-btn" data-tab="world-clock">世界時計</button>
+        <button class="tab-btn" data-tab="meeting-planner">
+          ミーティングプランナー
+        </button>
+      </div>
+
+      <main>
+        <!-- シンプル変換タブ -->
+        <section id="converter" class="tab-content active">
+          <div class="card">
+            <h2>タイムゾーン変換</h2>
+
+            <div class="input-group">
+              <label for="date-input">日付:</label>
+              <input type="date" id="date-input" />
+            </div>
+
+            <div class="input-group">
+              <label for="time-input">時間:</label>
+              <input type="time" id="time-input" />
+            </div>
+
+            <div class="input-group">
+              <label for="source-timezone">元のタイムゾーン:</label>
+              <select id="source-timezone"></select>
+            </div>
+
+            <div class="input-group">
+              <label for="target-timezone">変換先タイムゾーン:</label>
+              <select id="target-timezone"></select>
+            </div>
+
+            <button id="convert-btn" class="primary-btn">変換する</button>
+
+            <div id="result" class="result-container hidden">
+              <h3>変換結果</h3>
+              <div id="result-content" class="result-content"></div>
+              <button id="add-favorite" class="secondary-btn">
+                <i class="fas fa-star"></i> お気に入りに追加
+              </button>
+              <button id="copy-url" class="secondary-btn">
+                <i class="fas fa-link"></i> URLをコピー
+              </button>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>お気に入りタイムゾーン</h2>
+            <div id="favorites-container" class="favorites-container">
+              <p class="empty-message">お気に入りはまだありません</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 世界時計タブ -->
+        <section id="world-clock" class="tab-content">
+          <div class="card">
+            <h2>世界時計</h2>
+            <p class="subtitle">主要都市の現在時刻</p>
+            <div id="world-clocks" class="world-clocks-grid"></div>
+            <div class="add-clock">
+              <select id="add-world-clock"></select>
+              <button id="add-clock-btn" class="primary-btn">追加</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ミーティングプランナータブ -->
+        <section id="meeting-planner" class="tab-content">
+          <div class="card">
+            <h2>ミーティングプランナー</h2>
+            <p class="subtitle">
+              複数のタイムゾーンでの最適な会議時間を見つける
+            </p>
+
+            <div class="participants">
+              <h3>参加者</h3>
+              <div id="participants-list">
+                <div class="participant">
+                  <input
+                    type="text"
+                    placeholder="参加者名"
+                    class="participant-name"
+                  />
+                  <select class="participant-timezone"></select>
+                  <button class="remove-participant secondary-btn">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+              <button id="add-participant" class="primary-btn">
+                <i class="fas fa-plus"></i> 参加者を追加
+              </button>
+            </div>
+
+            <div class="date-selection">
+              <h3>日付を選択</h3>
+              <input type="date" id="meeting-date" />
+            </div>
+
+            <button id="find-times" class="primary-btn">
+              最適な時間を探す
+            </button>
+
+            <div id="meeting-results" class="meeting-results hidden">
+              <h3>おすすめの会議時間</h3>
+              <div id="time-suggestions" class="time-suggestions"></div>
+              <div id="time-matrix" class="time-matrix"></div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <p>&copy; 2025 TimeZoneConverter - 山崎様のためのツール</p>
+        <div class="theme-toggle">
+          <span>テーマ切替: </span>
+          <button id="light-mode" class="theme-btn active">
+            <i class="fas fa-sun"></i>
+          </button>
+          <button id="dark-mode" class="theme-btn">
+            <i class="fas fa-moon"></i>
+          </button>
+        </div>
+      </footer>
+    </div>
+
+    <script type="module" src="timezone-converter/js/app.js"></script>
+  </body>
+</html>

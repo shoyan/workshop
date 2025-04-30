@@ -1,0 +1,493 @@
+/* 基本スタイル */
+:root {
+  --primary-color: #3498db;
+  --primary-dark: #2980b9;
+  --secondary-color: #e74c3c;
+  --secondary-dark: #c0392b;
+  --success-color: #2ecc71;
+  --warning-color: #f39c12;
+  --text-color: #333;
+  --text-light: #666;
+  --bg-color: #f5f7fa;
+  --card-bg: #fff;
+  --card-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --border-color: #ddd;
+  --input-bg: #fff;
+  --header-bg: #fff;
+  --footer-bg: #fff;
+}
+
+/* ダークモード */
+.dark-mode {
+  --primary-color: #3498db;
+  --primary-dark: #2980b9;
+  --secondary-color: #e74c3c;
+  --secondary-dark: #c0392b;
+  --success-color: #2ecc71;
+  --warning-color: #f39c12;
+  --text-color: #f5f5f5;
+  --text-light: #bbb;
+  --bg-color: #1a1a1a;
+  --card-bg: #2a2a2a;
+  --card-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  --border-color: #444;
+  --input-bg: #333;
+  --header-bg: #2a2a2a;
+  --footer-bg: #2a2a2a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  transition: background-color 0.3s ease;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ヘッダースタイル */
+header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: var(--header-bg);
+  border-radius: 10px;
+  box-shadow: var(--card-shadow);
+}
+
+header h1 {
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+header p {
+  color: var(--text-light);
+  font-size: 1.2rem;
+}
+
+/* タブスタイル */
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  background-color: var(--card-bg);
+  border-radius: 50px;
+  padding: 5px;
+  box-shadow: var(--card-shadow);
+}
+
+.tab-btn {
+  padding: 10px 20px;
+  border: none;
+  background-color: transparent;
+  color: var(--text-light);
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.tab-btn:hover:not(.active) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* カードスタイル */
+.card {
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  box-shadow: var(--card-shadow);
+  padding: 25px;
+  margin-bottom: 20px;
+}
+
+.card h2 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 10px;
+}
+
+.card h3 {
+  color: var(--text-color);
+  margin: 15px 0;
+  font-size: 1.2rem;
+}
+
+.subtitle {
+  color: var(--text-light);
+  margin-bottom: 20px;
+}
+
+/* フォーム要素 */
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+input[type="date"],
+input[type="time"],
+input[type="text"],
+select {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  transition: border-color 0.3s ease;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.primary-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.primary-btn:hover {
+  background-color: var(--primary-dark);
+}
+
+.secondary-btn {
+  background-color: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.secondary-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-color: var(--text-light);
+}
+
+/* 結果表示 */
+.result-container {
+  margin-top: 25px;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: rgba(52, 152, 219, 0.1);
+  border-left: 4px solid var(--primary-color);
+}
+
+.result-content {
+  margin: 15px 0;
+  font-size: 1.1rem;
+}
+
+.hidden {
+  display: none;
+}
+
+/* お気に入り */
+.favorites-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.favorite-item {
+  background-color: rgba(52, 152, 219, 0.1);
+  padding: 10px 15px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 200px;
+}
+
+.favorite-info {
+  flex-grow: 1;
+}
+
+.favorite-item button {
+  background: none;
+  border: none;
+  color: var(--text-light);
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 5px;
+}
+
+.favorite-item button:hover {
+  color: var(--secondary-color);
+}
+
+.empty-message {
+  color: var(--text-light);
+  font-style: italic;
+}
+
+/* 世界時計 */
+.world-clocks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.clock-item {
+  background-color: rgba(0, 0, 0, 0.02);
+  border-radius: 5px;
+  padding: 15px;
+  border-left: 3px solid var(--primary-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.clock-item.daytime {
+  border-left-color: var(--success-color);
+}
+
+.clock-item.nighttime {
+  border-left-color: var(--secondary-color);
+}
+
+.clock-info h4 {
+  margin-bottom: 5px;
+}
+
+.clock-time {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.clock-date {
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+.remove-clock {
+  background: none;
+  border: none;
+  color: var(--text-light);
+  cursor: pointer;
+}
+
+.remove-clock:hover {
+  color: var(--secondary-color);
+}
+
+.add-clock {
+  display: flex;
+  gap: 10px;
+}
+
+.add-clock select {
+  flex-grow: 1;
+}
+
+/* ミーティングプランナー */
+.participants {
+  margin-bottom: 20px;
+}
+
+.participant {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.participant-name {
+  flex: 1;
+}
+
+.participant-timezone {
+  flex: 2;
+}
+
+.date-selection {
+  margin-bottom: 20px;
+}
+
+.meeting-results {
+  margin-top: 20px;
+}
+
+.time-suggestions {
+  margin: 15px 0;
+}
+
+.time-suggestion {
+  background-color: rgba(46, 204, 113, 0.1);
+  border-left: 3px solid var(--success-color);
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.time-matrix {
+  margin-top: 20px;
+  overflow-x: auto;
+}
+
+.time-matrix table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.time-matrix th, .time-matrix td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid var(--border-color);
+}
+
+.time-matrix th {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.time-cell {
+  width: 40px;
+  height: 40px;
+}
+
+.time-cell.good {
+  background-color: rgba(46, 204, 113, 0.3);
+}
+
+.time-cell.ok {
+  background-color: rgba(243, 156, 18, 0.3);
+}
+
+.time-cell.bad {
+  background-color: rgba(231, 76, 60, 0.3);
+}
+
+.time-cell.sleeping {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* フッター */
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: var(--footer-bg);
+  box-shadow: var(--card-shadow);
+}
+
+footer p {
+  color: var(--text-light);
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.theme-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--text-light);
+}
+
+.theme-btn.active {
+  color: var(--primary-color);
+}
+
+/* レスポンシブデザイン */
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+  
+  header h1 {
+    font-size: 2rem;
+  }
+  
+  .tabs {
+    flex-wrap: wrap;
+  }
+  
+  .participant {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  footer {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .card {
+    padding: 15px;
+  }
+  
+  .world-clocks-grid {
+    grid-template-columns: 1fr;
+  }
+}
