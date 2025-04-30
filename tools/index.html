@@ -51,6 +51,16 @@
         color: white;
       }
 
+      .timezone-color {
+        background: linear-gradient(135deg, #3498db, #2980b9);
+        color: white;
+      }
+
+      .encode-color {
+        background: linear-gradient(135deg, #f39c12, #d35400);
+        color: white;
+      }
+
       .btn-custom {
         padding: 0.6rem 1.5rem;
         border-radius: 30px;
@@ -96,6 +106,30 @@
         color: white;
       }
 
+      .btn-timezone {
+        background-color: #3498db;
+        border-color: #3498db;
+        color: white;
+      }
+
+      .btn-timezone:hover {
+        background-color: #2980b9;
+        border-color: #2980b9;
+        color: white;
+      }
+
+      .btn-encode {
+        background-color: #f39c12;
+        border-color: #f39c12;
+        color: white;
+      }
+
+      .btn-encode:hover {
+        background-color: #d35400;
+        border-color: #d35400;
+        color: white;
+      }
+
       .page-header {
         border-radius: 10px;
         background-color: white;
@@ -118,7 +152,7 @@
       <!-- ツールグリッド -->
       <div class="row g-4">
         <!-- JSON整形ツール -->
-        <div class="col-md-4">
+        <div class="col-md-4 mb-4">
           <div class="card shadow-sm h-100">
             <div class="card-header json-color">
               <div class="card-icon">🔧</div>
@@ -129,7 +163,7 @@
                 複雑なJSON文字列を見やすく整形します。構文エラーのチェックや、インデントの調整も可能です。
               </p>
               <div class="text-center mt-auto">
-                <a href="json/" class="btn btn-custom btn-json"
+                <a href="json-tool/" class="btn btn-custom btn-json"
                   >ツールを使う</a
                 >
               </div>
@@ -138,7 +172,7 @@
         </div>
 
         <!-- パスワード生成ツール -->
-        <div class="col-md-4">
+        <div class="col-md-4 mb-4">
           <div class="card shadow-sm h-100">
             <div class="card-header password-color">
               <div class="card-icon">🔒</div>
@@ -149,9 +183,7 @@
                 安全で強力なパスワードを簡単に生成します。長さや含める文字種を自由にカスタマイズできます。
               </p>
               <div class="text-center mt-auto">
-                <a
-                  href="pw-generator/"
-                  class="btn btn-custom btn-password"
+                <a href="pw-generator/" class="btn btn-custom btn-password"
                   >ツールを使う</a
                 >
               </div>
@@ -160,7 +192,7 @@
         </div>
 
         <!-- URL短縮ツール -->
-        <div class="col-md-4">
+        <div class="col-md-4 mb-4">
           <div class="card shadow-sm h-100">
             <div class="card-header url-color">
               <div class="card-icon">🔗</div>
@@ -172,6 +204,48 @@
               </p>
               <div class="text-center mt-auto">
                 <a href="url-shortener/" class="btn btn-custom btn-url"
+                  >ツールを使う</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- タイムゾーンコンバーター -->
+        <div class="col-md-4 mb-4">
+          <div class="card shadow-sm h-100">
+            <div class="card-header timezone-color">
+              <div class="card-icon">🌐</div>
+              <h2 class="h4 mb-0">タイムゾーンコンバーター</h2>
+            </div>
+            <div class="card-body d-flex flex-column">
+              <p class="card-text flex-grow-1">
+                世界中の時間を簡単に変換。異なるタイムゾーン間の時刻計算や会議の時間調整に便利です。
+              </p>
+              <div class="text-center mt-auto">
+                <a
+                  href="timezone-converter/"
+                  class="btn btn-custom btn-timezone"
+                  >ツールを使う</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- URLエンコードツール -->
+        <div class="col-md-4 mb-4">
+          <div class="card shadow-sm h-100">
+            <div class="card-header encode-color">
+              <div class="card-icon">📝</div>
+              <h2 class="h4 mb-0">URLエンコードツール</h2>
+            </div>
+            <div class="card-body d-flex flex-column">
+              <p class="card-text flex-grow-1">
+                テキストをURLセーフな形式にエンコードまたはデコードします。特殊文字を含むURLの作成に最適です。
+              </p>
+              <div class="text-center mt-auto">
+                <a href="url-encode/" class="btn btn-custom btn-encode"
                   >ツールを使う</a
                 >
               </div>
